@@ -39,7 +39,9 @@ export default {
 <template>
 
     <div class="col-12">
-        <PropertyListItem class="card" v-for="property in propertyList" :key="property.id" :propertyObject="property" />
+        <div id="post-list-wrapper">
+            <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property" />
+        </div>
     </div>
 
 </template>
