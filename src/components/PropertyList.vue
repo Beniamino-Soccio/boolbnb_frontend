@@ -1,0 +1,47 @@
+<script>
+import axios from 'axios';
+import PropertiesListItem from './PropertiesListItem.vue';
+
+export default {
+    name: 'PropertyList',
+    components: {
+        PropertiesListItem,
+    },
+    data() {
+        return {
+            propertyList: [],
+            apiUrl: 'http://127.0.0.1:8000/api/admin/properties'
+        }
+    },
+    methods: {
+        getProperties() {
+            axios.get('http://127.0.0.1:8000/api/admin/properties')
+                .then((response) => {
+                    // handle success
+                    console.log(response.data.result);
+                    this.propertyList = response.data.result;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        }
+    },
+    created() {
+        this.getProperties();
+    },
+}
+</script>
+
+<template>
+
+    <div class="col-12">
+        <PropertyListItem class="card" v-for="property in propertyList" :key="property.id" :propertyObject="property" />
+    </div>
+
+</template>
+
+<style scoped></style>
