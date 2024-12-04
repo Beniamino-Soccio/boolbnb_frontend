@@ -18,8 +18,8 @@ export default {
 </script>
 
 <template>
-    <div class="col-8">
-        <div class="card mb-4">
+    <div class="col-3">
+        <div class="card me-3">
             <div class="card-body">
                 <h5 class="card-title">{{ propertyObj.title }} </h5>
                 <p class="card-text"> {{ propertyObj.description }} </p>
@@ -32,4 +32,17 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+div.card:hover{
+    background-color: #a8e2dd;
+    color: #0e2a35;
+}
+.card:hover .card-body > h5{
+    color: #000;
+}
+.card:hover .card-body > p{
+    color: #000;
+}
+
+</style>
+<!-- #BEF1BF -->
