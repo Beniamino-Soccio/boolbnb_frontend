@@ -38,12 +38,14 @@ export default {
 
 <template>
 
-    <div class="col-12">
-        <div id="post-list-wrapper">
+    <div class="container justify-content-between">
+        <div class="d-flex justify-content-center flex-wrap">
             <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property" />
         </div>
     </div>
 
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

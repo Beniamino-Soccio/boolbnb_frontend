@@ -18,8 +18,8 @@ export default {
 </script>
 
 <template>
-    <div class="col-6">
-        <div class="card">
+    <div class="col-8">
+        <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">{{ propertyObj.title }} </h5>
                 <p class="card-text"> {{ propertyObj.description }} </p>
