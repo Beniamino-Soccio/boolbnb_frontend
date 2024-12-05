@@ -61,7 +61,7 @@ export default {
     </section>
 
     <section class="col-12" v-else>
-        <div id="post-list-wrapper">
+        <div>
             <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
                 @click="show(property.id)" />
         </div>
