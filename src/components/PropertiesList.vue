@@ -60,7 +60,7 @@ export default {
 <template>
 
     <section class="filter">
-        <BasicFilter />
+        <BasicFilter :propertyObj="property" />
     </section>
 
     <section class="loader" v-if="!loaded">

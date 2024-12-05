@@ -2,9 +2,35 @@
 export default {
     data() {
         return {
-
+            searchProperty: '',
+            filteredProperties: [],
+            property: [ // Lista di elementi da filtrare
+                { id: 1, title: "Anna" },
+                { id: 2, title: "Alberto" },
+                { id: 3, title: "Marco" },
+                { id: 4, title: "Maria" },
+                { id: 5, title: "Luca" },
+            ],
         }
-    }
+    },
+    props: {
+        propertyObj: {
+            type: Object,
+            required: true,
+        },
+    },
+    methods: {
+        filterList() {
+            const query = this.searchProperty.toLowerCase();
+            this.filteredProperties = this.property.filter((item) =>
+                item.title.toLowerCase().includes(query) // Filtra per lettere iniziali
+            );
+        },
+    },
+    mounted() {
+        // Mostra tutti gli elementi all'inizio
+        this.filteredProperties = this.property;
+    },
 }
 </script>
 
@@ -12,10 +38,16 @@ export default {
 
     <nav class="navbar navbar-light">
         <div class="container-fluid">
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search a property.." aria-label="Search">
+            <div class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
+                    aria-label="Search" @input="filterList">
                 <button class="btn btn-dark" type="submit">Search!</button>
-            </form>
+            </div>
+            <div>
+                <ul>
+                    <li v-for="property in filteredProperties" :key="property.id">{{ property.title }}</li>
+                </ul>
+            </div>
         </div>
     </nav>
 
