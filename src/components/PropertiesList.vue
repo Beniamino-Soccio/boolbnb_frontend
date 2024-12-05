@@ -1,11 +1,13 @@
 <script>
 import axios from 'axios';
 import PropertiesListItem from './PropertiesListItem.vue';
+import AppLoader from './AppLoader.vue';
 
 export default {
     name: 'PropertyList',
     components: {
         PropertiesListItem,
+        AppLoader,
     },
     data() {
         return {
@@ -44,17 +46,26 @@ export default {
     created() {
         this.getProperties();
     },
+    computed: {
+        loaded() {
+            return this.propertyList.length > 0;
+        },
+    }
 }
 </script>
 
 <template>
 
-    <div class="col-12">
+    <section class="loader" v-if="!loaded">
+        <AppLoader />
+    </section>
+
+    <section class="col-12" v-else>
         <div id="post-list-wrapper">
             <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
                 @click="show(property.id)" />
         </div>
-    </div>
+    </section>
 
 </template>
 
