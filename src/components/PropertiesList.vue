@@ -1,12 +1,15 @@
 <script>
 import axios from 'axios';
 import PropertiesListItem from './PropertiesListItem.vue';
+import BasicFilter from './BasicFilter.vue';
 import AppLoader from './AppLoader.vue';
+
 
 export default {
     name: 'PropertyList',
     components: {
         PropertiesListItem,
+        BasicFilter,
         AppLoader,
     },
     data() {
@@ -55,6 +58,10 @@ export default {
 </script>
 
 <template>
+
+    <section class="filter">
+        <BasicFilter />
+    </section>
 
     <section class="loader" v-if="!loaded">
         <AppLoader />
