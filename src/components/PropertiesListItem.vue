@@ -19,7 +19,7 @@ export default {
 
 <template>
     <div class="col-6">
-        <div class="card">
+        <div class="card my-5">
             <div class="card-body">
                 <h5 class="card-title">{{ propertyObj.title }} </h5>
                 <p class="card-text"> {{ propertyObj.description }} </p>
@@ -32,4 +32,8 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+h5 {
+    cursor: pointer;
+}
+</style>
