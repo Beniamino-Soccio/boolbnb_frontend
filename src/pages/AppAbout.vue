@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      
+
     }
   }
 }
@@ -10,7 +10,15 @@ export default {
 
 <template>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="fw-bold text-center">About us !!</h1>
+      </div>
+    </div>
+  </div>
+
+
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
