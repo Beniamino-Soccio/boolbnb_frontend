@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropertiesListItem from './PropertiesListItem.vue';
 import BasicFilter from './BasicFilter.vue';
 import AppLoader from './AppLoader.vue';
+import { store } from '../js/store';
 
 
 export default {
@@ -15,7 +16,8 @@ export default {
     data() {
         return {
             propertyList: [],
-            apiUrl: 'http://127.0.0.1:8000/api/admin/properties'
+            apiUrl: 'http://127.0.0.1:8000/api/admin/properties',
+            store,
         }
     },
     props: {

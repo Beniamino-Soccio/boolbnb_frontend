@@ -1,16 +1,12 @@
 <script>
+import { store } from '../js/store';
+
 export default {
     data() {
         return {
             searchProperty: '',
             filteredProperties: [],
-            property: [ // Lista di elementi da filtrare
-                { id: 1, title: "Anna" },
-                { id: 2, title: "Alberto" },
-                { id: 3, title: "Marco" },
-                { id: 4, title: "Maria" },
-                { id: 5, title: "Luca" },
-            ],
+            store,
         }
     },
     props: {
