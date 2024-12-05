@@ -1,16 +1,16 @@
 <script>
 
-import PropertyList from '../components/PropertyList.vue';
+import PropertiesList from '../components/PropertiesList.vue';
 
 export default {
-    name: 'AppProperty',
+    name: 'AppProperties',
     data() {
         return {
 
         }
     },
     components: {
-        PropertyList,
+        PropertiesList,
     }
 }
 </script>
@@ -22,7 +22,7 @@ export default {
             <div class="col-12">
                 <h1 class="fw-bold fst-italic text-decoration-underline my-5 text-center"> Properties List:</h1>
             </div>
-            <PropertyList />
+            <PropertiesList :withShow="true" />
         </div>
     </div>
 

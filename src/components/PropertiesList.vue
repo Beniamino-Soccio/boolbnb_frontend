@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         getProperties() {
-            axios.get('http://127.0.0.1:8000/api/admin/properties')
+            axios.get(this.apiUrl)
                 .then((response) => {
                     // handle success
                     console.log(response.data.result);
@@ -28,6 +28,11 @@ export default {
                 .finally(function () {
                     // always executed
                 });
+        },
+        show(propertyId) {
+            if (this.withShow) {
+                this.$router.push({ name: 'properties.show', params: { id: propertyId } })
+            }
         }
     },
     created() {
@@ -40,7 +45,8 @@ export default {
 
     <div class="col-12">
         <div id="post-list-wrapper">
-            <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property" />
+            <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
+                @click="show(property.id)" />
         </div>
     </div>
 
