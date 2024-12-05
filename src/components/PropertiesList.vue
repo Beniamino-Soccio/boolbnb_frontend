@@ -13,6 +13,12 @@ export default {
             apiUrl: 'http://127.0.0.1:8000/api/admin/properties'
         }
     },
+    props: {
+        withShow: {
+            required: false,
+            type: Boolean,
+        }
+    },
     methods: {
         getProperties() {
             axios.get(this.apiUrl)
