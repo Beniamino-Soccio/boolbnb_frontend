@@ -49,7 +49,7 @@ export default {
                     if (this.searchProperty == this.searchedAddresses[i].address.freeformAddress) {
                         store.latitude = this.searchedAddresses[i].position.lat;
                         store.longitude = this.searchedAddresses[i].position.lng;
-                    } else if (i === this.searchedAddresses.length) {
+                    } else if (i === this.searchedAddresses.length - 1) {
                         store.latitude = this.searchedAddresses[0].position.lat;
                         store.longitude = this.searchedAddresses[0].position.lng;
                     }
