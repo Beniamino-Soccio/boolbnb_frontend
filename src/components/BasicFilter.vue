@@ -41,6 +41,24 @@ export default {
             this.searchProperty = r;
             this.searchedAddressesName = [];
         },
+        saveDataAddress(a) {
+            if (this.searchProperty.length < 2) {
+                console.log("nessun dato inserito nella ricerca");
+            } else {
+                for (let i = 0; i < this.searchedAddresses.length; i++) {
+                    if (this.searchProperty == this.searchedAddresses[i].address.freeformAddress) {
+                        store.latitude = this.searchedAddresses[i].position.lat;
+                        store.longitude = this.searchedAddresses[i].position.lng;
+                    } else if (i === this.searchedAddresses.length) {
+                        store.latitude = this.searchedAddresses[0].position.lat;
+                        store.longitude = this.searchedAddresses[0].position.lng;
+                    }
+                };
+
+                console.log("latituidne", store.latitude);
+                console.log("longitudine", store.longitude);
+            }
+        }
     }
 }
 </script>
@@ -50,10 +68,10 @@ export default {
         <div class="container-fluid">
             <div class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
-                    aria-label="Search" @input="searchAProperty">
-                <button class="btn btn-dark" type="submit">Search</button>
+                    aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
+                <button class="btn btn-dark" type="submit" @click="saveDataAddress">Search</button>
             </div>
-            <div class="results-address" :class="{ 'd-none': searchProperty == '' }">
+            <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
                 <div class="address" v-for="address in searchedAddressesName"><span @click="selectAnAddress(address)">{{
                     address
                         }}</span></div>
