@@ -69,8 +69,8 @@ export default {
         <AppLoader />
     </section>
 
-    <section class="col-12" v-else>
-        <div>
+    <section class="col-12 container justify-content-between" v-else>
+        <div class="d-flex justify-content-center flex-wrap">
             <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
                 @click="show(property.id)" />
         </div>
