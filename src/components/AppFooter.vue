@@ -35,7 +35,7 @@ export default {
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="#" target="_blank" class="social-link">
-              <i class="fab fa-twitter"></i>
+              <i class="fa-brands fa-x-twitter"></i>
             </a>
             <a href="#" target="_blank" class="social-link">
               <i class="fab fa-instagram"></i>
@@ -135,6 +135,16 @@ export default {
   display: flex;
   gap: 15px;
   
+}
+
+.fa-instagram {
+    --fa: "\f16d";
+    color: orangered;
+}
+
+.fa-x-twitter {
+    --fa: "\e61b";
+    color: black;
 }
 
 .social-link {
