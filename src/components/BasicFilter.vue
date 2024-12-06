@@ -10,7 +10,7 @@ export default {
             important,
             searchProperty: '',
             searchedAddresses: [],
-            selectedAddress: [],
+            searchedAddressesName: [],
         }
     },
     props: {
@@ -29,18 +29,17 @@ export default {
                 .then(p => {
                     console.log(p.results);
                     this.searchedAddresses = p.results;
+                    this.searchedAddressesName = p.results.map((item) => item.address.freeformAddress);
+
                 })
                 .catch(function (reason) {
                     console.log(reason)
                 })
         },
-        selectAnAddress(want, r) {
+        selectAnAddress(r) {
             this.searchProperty = '';
-            this.selectedAddress = [];
-            this.selectedAddress = want;
             this.searchProperty = r;
-            this.searchedAddresses = [];
-
+            this.searchedAddressesName = [];
         },
     }
 }
@@ -52,12 +51,11 @@ export default {
             <div class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
                     aria-label="Search" @input="searchAProperty">
-                <button class="btn btn-dark" type="submit">Search!</button>
+                <button class="btn btn-dark" type="submit">Search</button>
             </div>
-            <div class="results-address">
-                <div class="address" v-for="address in searchedAddresses"><span
-                        @click="selectAnAddress(address, address.address.freeformAddress)">{{
-                            address.address.freeformAddress
+            <div class="results-address" :class="{ 'd-none': searchProperty == '' }">
+                <div class="address" v-for="address in searchedAddressesName"><span @click="selectAnAddress(address)">{{
+                    address
                         }}</span></div>
             </div>
         </div>
