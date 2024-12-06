@@ -10,6 +10,7 @@ export default {
             important,
             searchProperty: '',
             searchedAddresses: [],
+            selectedAddress: [],
         }
     },
     props: {
@@ -32,7 +33,15 @@ export default {
                 .catch(function (reason) {
                     console.log(reason)
                 })
-        }
+        },
+        selectAnAddress(want, r) {
+            this.searchProperty = '';
+            this.selectedAddress = [];
+            this.selectedAddress = want;
+            this.searchProperty = r;
+            this.searchedAddresses = [];
+
+        },
     }
 }
 </script>
@@ -46,8 +55,9 @@ export default {
                 <button class="btn btn-dark" type="submit">Search!</button>
             </div>
             <div class="results-address">
-                <div class="address" v-for="address in searchedAddresses" @click=""><span>{{
-                        address.address.freeformAddress
+                <div class="address" v-for="address in searchedAddresses"><span
+                        @click="selectAnAddress(address, address.address.freeformAddress)">{{
+                            address.address.freeformAddress
                         }}</span></div>
             </div>
         </div>
