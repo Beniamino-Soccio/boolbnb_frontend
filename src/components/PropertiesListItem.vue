@@ -47,3 +47,8 @@ div.card:hover{
     color: #000;
 }
 </style>
+
+<!--
+-grandezza cards
+immagini nelle card 
+-->
