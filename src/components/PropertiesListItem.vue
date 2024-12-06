@@ -19,7 +19,7 @@ export default {
 
 <template>
     <div class="col-3">
-        <div class="card me-3 mb-3">
+        <div class="card me-3 mb-5">
             <div class="card-body">
                 <h5 class="card-title">{{ propertyObj.title }} </h5>
                 <p class="card-text"> {{ propertyObj.description }} </p>
