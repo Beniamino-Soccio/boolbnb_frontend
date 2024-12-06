@@ -19,12 +19,11 @@ export default {
         filterList() {
             const query = this.searchProperty.toLowerCase();
             this.filteredProperties = this.property.filter((item) =>
-                item.title.toLowerCase().includes(query) // Filtra per lettere iniziali
+                item.title.toLowerCase().includes(query)
             );
         },
     },
     mounted() {
-        // Mostra tutti gli elementi all'inizio
         this.filteredProperties = this.property;
     },
 }
