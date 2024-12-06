@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tomtom-international/web-sdk-maps": "^6.25.0",
+    "@tomtom-international/web-sdk-services": "^6.25.0",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "vue": "^3.5.13",
