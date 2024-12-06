@@ -18,17 +18,14 @@ export default {
 </script>
 
 <template>
-    <div class="col-3">
-        <div class="card me-3 mb-5">
-            <div class="card-body">
-                <h5 class="card-title">{{ propertyObj.title }} </h5>
-                <p class="card-text"> {{ propertyObj.description }} </p>
-                <p class="card-text"> N. di stanze: {{ propertyObj.rooms }} </p>
-                <p class="card-text"> N. di letti: {{ propertyObj.beds }} </p>
-                <p class="card-text"> N. di bagni: {{ propertyObj.bathrooms }} </p>
-                <p class="card-text"> Grandezza appartamento: {{ propertyObj.square_meters }} mq</p>
-            </div>
-        </div>
+    <div class="card-body pb-3">
+        <img src="https://www.sinonimi-contrari.it/includes/images/sharers/sinonimi-di-esempio.png" class="card-img-top mb-3" alt="...">
+        <h5 class="card-title px-3">{{ propertyObj.title }} </h5>
+        <p class="card-text px-3"> {{ propertyObj.description }} </p>
+        <p class="card-text px-3"> N. of rooms: {{ propertyObj.rooms }} </p>
+        <p class="card-text px-3"> N. of beds: {{ propertyObj.beds }} </p>
+        <p class="card-text px-3"> N. of bathrooms: {{ propertyObj.bathrooms }} </p>
+        <p class="card-text px-3"> Square meters: {{ propertyObj.square_meters }} mq</p>
     </div>
 </template>
 
@@ -36,19 +33,14 @@ export default {
 h5 {
     cursor: pointer;
 }
-div.card:hover{
-    background-color: #a8e2dd;
-    color: #0e2a35;
-}
+
 .card:hover .card-body > h5{
     color: #000;
 }
 .card:hover .card-body > p{
     color: #000;
 }
+img{
+    max-width: 400px;
+}
 </style>
-
-<!--
--grandezza cards
-immagini nelle card 
--->

@@ -69,13 +69,20 @@ export default {
         <AppLoader />
     </section>
 
-    <section class="col-12 container justify-content-between" v-else>
-        <div class="d-flex justify-content-center flex-wrap">
-            <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
-                @click="show(property.id)" />
+    <section class="container justify-content-between" v-else>
+        <div class="row d-flex ">
+            <PropertiesListItem class="card col-4 mx-3 mb-5 border-0 p-0"  v-for="property in propertyList" :key="property.id" :propertyObj="property" @click="show(property.id)" />
         </div>
     </section>
 
 </template>
 
-<style scoped></style>
+<style scoped>
+div.card:hover{
+    background-color: #a8e2dd;
+    color: #0e2a35;
+}
+.card{
+    max-width: 400px;
+}
+</style>
