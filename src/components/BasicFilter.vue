@@ -1,12 +1,15 @@
 <script>
 import { store } from '../js/store';
+import { important } from '../js/important';
+import tt from '@tomtom-international/web-sdk-services';
 
 export default {
     data() {
         return {
-            searchProperty: '',
-            filteredProperties: [],
             store,
+            important,
+            searchProperty: '',
+            searchedAddresses: [],
         }
     },
     props: {
@@ -16,32 +19,36 @@ export default {
         },
     },
     methods: {
-        filterList() {
-            const query = this.searchProperty.toLowerCase();
-            this.filteredProperties = this.property.filter((item) =>
-                item.title.toLowerCase().includes(query)
-            );
-        },
-    },
-    mounted() {
-        this.filteredProperties = this.property;
-    },
+        searchAProperty() {
+            tt.services
+                .geocode({
+                    key: important.apiKey,
+                    query: this.searchProperty,
+                })
+                .then(p => {
+                    console.log(p.results);
+                    this.searchedAddresses = p.results;
+                })
+                .catch(function (reason) {
+                    console.log(reason)
+                })
+        }
+    }
 }
 </script>
 
 <template>
-
     <nav class="navbar navbar-light">
         <div class="container-fluid">
             <div class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
-                    aria-label="Search" @input="filterList">
+                    aria-label="Search" @input="searchAProperty">
                 <button class="btn btn-dark" type="submit">Search!</button>
             </div>
-            <div>
-                <ul>
-                    <li v-for="property in filteredProperties" :key="property.id">{{ property.title }}</li>
-                </ul>
+            <div class="results-address">
+                <div class="address" v-for="address in searchedAddresses" @click=""><span>{{
+                        address.address.freeformAddress
+                        }}</span></div>
             </div>
         </div>
     </nav>
