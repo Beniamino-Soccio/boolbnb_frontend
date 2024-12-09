@@ -1,8 +1,38 @@
 <script>
+import axios from 'axios';
+import { store } from '../js/store.js'
+
+import BasicFilter from '../components/BasicFilter.vue';
+
 export default {
   data() {
     return {
+      store,
+    }
+  },
+  components: {
+    BasicFilter
+  },
+  methods: {
+    sendSearchParametres() {
+      const formData = {
+        latitude: store.latitude,
+        longitude: store.longitude,
+        radius: store.radius
+      }
 
+      axios.post(store.apiUrl, formData)
+        .then((response) => {
+          store.searchedBool = false;
+          console.log(response.data.result);
+          store.property = response.data.result;
+          if (response.data.result.length > 0) {
+            store.searchedBool = true;
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
 }
@@ -23,7 +53,7 @@ export default {
           </p>
         </div>
       </div>
-
+      <BasicFilter @propertyCall="sendSearchParametres" />
 
       <div class="row">
         <div class="col-12 py-5">

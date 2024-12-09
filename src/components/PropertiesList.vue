@@ -31,16 +31,12 @@ export default {
             axios.get(this.apiUrl)
                 .then((response) => {
                     // handle success
-                    console.log(response.data.result);
                     this.propertyList = response.data.result;
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 })
-                .finally(function () {
-                    // always executed
-                });
         },
         show(propertyId) {
             if (this.withShow) {
@@ -65,10 +61,13 @@ export default {
         <AppLoader />
     </section>
 
-    <section class="container justify-content-between" v-else>
-        <div class="row d-flex justify-content-center ">
-            <PropertiesListItem class="card col-4 mx-3 border-0 p-0 rounded-5" v-for="property in propertyList"
-                :key="property.id" :propertyObj="property" @click="show(property.id)" />
+    <section class="col-12 container justify-content-between" v-else>
+        <div class="all-properties">
+            <h2>All Properties</h2>
+            <div class="d-flex justify-content-center flex-wrap">
+                <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
+                    @click="show(property.id)" />
+            </div>
         </div>
     </section>
 
