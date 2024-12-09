@@ -31,16 +31,12 @@ export default {
             axios.get(this.apiUrl)
                 .then((response) => {
                     // handle success
-                    console.log(response.data.result);
                     this.propertyList = response.data.result;
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 })
-                .finally(function () {
-                    // always executed
-                });
         },
         show(propertyId) {
             if (this.withShow) {
@@ -60,19 +56,24 @@ export default {
 </script>
 
 <template>
-
-    <section class="filter">
-        <BasicFilter :propertyObj="property" />
-    </section>
-
     <section class="loader" v-if="!loaded">
         <AppLoader />
     </section>
 
     <section class="col-12 container justify-content-between" v-else>
-        <div class="d-flex justify-content-center flex-wrap">
-            <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
-                @click="show(property.id)" />
+        <div class="searched-property" v-if="store.searchedBool">
+            <h2>Searched Property</h2>
+            <div class="d-flex justify-content-center flex-wrap">
+                <PropertiesListItem v-for="property in store.property" :key="property.id" :propertyObj="property"
+                    @click="show(property.id)" />
+            </div>
+        </div>
+        <div class="all-properties">
+            <h2>All Properties</h2>
+            <div class="d-flex justify-content-center flex-wrap">
+                <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
+                    @click="show(property.id)" />
+            </div>
         </div>
     </section>
 
