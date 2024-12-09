@@ -25,7 +25,9 @@ export default {
         .then((response) => {
           console.log(response.data.result);
           store.property = response.data.result;
-          store.searchedBool = true;
+          if (response.data.result.length > 0) {
+            store.searchedBool = true;
+          }
         })
         .catch(function (error) {
           console.log(error);
