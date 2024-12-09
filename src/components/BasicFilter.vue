@@ -13,12 +13,6 @@ export default {
             searchedAddressesName: [],
         }
     },
-    props: {
-        propertyObj: {
-            type: Object,
-            required: true,
-        },
-    },
     methods: {
         searchAProperty() {
             tt.services
@@ -69,7 +63,10 @@ export default {
             <div class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
                     aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
-                <button class="btn btn-dark" type="submit" @click="saveDataAddress">Search</button>
+                <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
+                    :to="{ 'name': 'properties' }">
+                    Search
+                </router-link>
             </div>
             <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
                 <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
