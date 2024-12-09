@@ -47,4 +47,8 @@ export default {
 </template>
 
 
-<style scoped></style>
+<style scoped>
+.container{
+    margin: 100px auto;
+}
+</style>
