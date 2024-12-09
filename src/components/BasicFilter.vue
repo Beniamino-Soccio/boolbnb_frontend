@@ -27,7 +27,6 @@ export default {
                     query: this.searchProperty,
                 })
                 .then(p => {
-                    console.log(p.results);
                     this.searchedAddresses = p.results;
                     this.searchedAddressesName = p.results.map((item) => item.address.freeformAddress);
 
@@ -57,6 +56,7 @@ export default {
 
                 console.log("latituidne", store.latitude);
                 console.log("longitudine", store.longitude);
+                this.$emit('propertyCall');
             }
         }
     }
@@ -72,9 +72,11 @@ export default {
                 <button class="btn btn-dark" type="submit" @click="saveDataAddress">Search</button>
             </div>
             <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
-                <div class="address" v-for="address in searchedAddressesName"><span @click="selectAnAddress(address)">{{
-                    address
-                        }}</span></div>
+                <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
+                    <span @click="selectAnAddress(address)">{{
+                        address
+                    }}</span>
+                </div>
             </div>
         </div>
     </nav>
