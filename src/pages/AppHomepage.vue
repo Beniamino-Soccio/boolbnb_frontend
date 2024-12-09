@@ -28,7 +28,7 @@ export default {
       <div class="row">
         <div class="col-12 py-5">
           <div class="logo-container">
-            <img class="homepage-logo" src="/public/images/BoolBnb.png" alt="Logo BoolBnb" />
+            <img class="homepage-logo" src="/images/BoolBnb.png" alt="Logo BoolBnb" />
           </div>
         </div>
       </div>
