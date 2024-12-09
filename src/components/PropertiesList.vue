@@ -56,6 +56,11 @@ export default {
 </script>
 
 <template>
+
+    <section class="filter">
+        <BasicFilter :propertyObj="property" />
+    </section>
+
     <section class="loader" v-if="!loaded">
         <AppLoader />
     </section>
@@ -79,4 +84,13 @@ export default {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+div.card:hover {
+    background-color: #a8e2dd;
+    color: #0e2a35;
+}
+
+.card {
+    max-width: 400px;
+}
+</style>

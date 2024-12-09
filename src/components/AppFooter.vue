@@ -7,12 +7,12 @@ export default {
 <template>
   <footer class="app-footer">
     <div class="container">
-      <div class="footer-top">       
+      <div class="footer-top">
         <div class="footer-section footer-logo">
-          <img src="/images/BoolBnb.png" alt="BoolBnB Logo" class="footer-logo-img"/>          
+          <img src="/images/BoolBnb.png" alt="BoolBnB Logo" class="footer-logo-img" />
         </div>
 
-       
+
         <div class="footer-section footer-links">
           <h4 class="footer-title">Quick Links</h4>
           <ul>
@@ -28,7 +28,7 @@ export default {
           </ul>
         </div>
 
-        
+
         <div class="footer-section footer-social">
           <h4 class="footer-title">Follow Us</h4>
           <div class="social-icons">
@@ -48,7 +48,7 @@ export default {
         </div>
       </div>
 
-      
+
       <div class="footer-bottom">
         <p>&copy; 2024 BoolBnB. All Rights Reserved.</p>
       </div>
@@ -57,7 +57,6 @@ export default {
 </template>
 
 <style scoped>
-
 :root {
   --primary-color: #0056b3;
   --secondary-color: #f8f9fa;

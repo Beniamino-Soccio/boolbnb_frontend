@@ -10,14 +10,14 @@ export default {
 <template>
   <header class="app-header">
     <nav class="navbar navbar-expand-lg">
-      <div class="container d-flex justify-content-between align-items-center">        
+      <div class="container d-flex justify-content-between align-items-center">
         <figure class="logo-container mb-0">
           <img src="/images/BoolBnb.png" alt="logo BoolBnB" class="logo" />
         </figure>
 
-        
-        <button
-          class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -41,7 +41,7 @@ export default {
           </ul>
         </div>
 
-       
+
         <div class="right-header">
           <button class="rent-btn btn">Rent with BnB</button>
         </div>
@@ -51,7 +51,6 @@ export default {
 </template>
 
 <style scoped>
-
 .app-header {
   background: linear-gradient(90deg, #007bff, #0046d5);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
