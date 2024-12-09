@@ -12,14 +12,12 @@ export default {
             required: true,
         },
     },
-    computed: {
-    }
 }
 </script>
 
 <template>
     <div class="card-body pb-3">
-        <img src="https://www.sinonimi-contrari.it/includes/images/sharers/sinonimi-di-esempio.png" class="card-img-top mb-3" alt="...">
+        <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
         <h5 class="card-title px-3">{{ propertyObj.title }} </h5>
         <p class="card-text px-3"> {{ propertyObj.description }} </p>
         <p class="card-text px-3"> N. of rooms: {{ propertyObj.rooms }} </p>
@@ -34,13 +32,15 @@ h5 {
     cursor: pointer;
 }
 
-.card:hover .card-body > h5{
+.card:hover .card-body>h5 {
     color: #000;
 }
-.card:hover .card-body > p{
+
+.card:hover .card-body>p {
     color: #000;
 }
-img{
+
+img {
     max-width: 400px;
 }
 </style>
