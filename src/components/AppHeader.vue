@@ -15,7 +15,7 @@ export default {
       <div class="container d-flex justify-content-between align-items-center">
 
         <figure>
-          <img src="/public/images/BoolBnb.png" alt="logo BoolBnB" id="logo-header">
+          <img src="/images/BoolBnb.png" alt="logo BoolBnB" id="logo-header">
         </figure>
         <div class="collapse navbar-collapse d-flex justify-content-center align-items-center" id="navbarNav">
           <ul class="navbar-nav">
