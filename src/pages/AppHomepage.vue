@@ -19,7 +19,7 @@ export default {
         <div class="col-12">
           <h1 class="fw-bold text-center animated-title">Welcome to BoolBnb</h1>
           <p class="tagline">
-            Find your next unique stay around the world!
+            Find your next unique stay around the world!!
           </p>
         </div>
       </div>
