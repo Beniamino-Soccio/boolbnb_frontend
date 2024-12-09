@@ -10,11 +10,11 @@ export default {
 
 <template>
   <div class="homepage-container">
-    
+
     <div class="background-overlay"></div>
 
     <div class="container text-center">
-      
+
       <div class="row">
         <div class="col-12">
           <h1 class="fw-bold text-center animated-title">Welcome to BoolBnb</h1>
@@ -24,14 +24,14 @@ export default {
         </div>
       </div>
 
-      
+
       <div class="row">
         <div class="col-12 py-5">
           <div class="logo-container">
-            <img class="homepage-logo" src="/public/images/BoolBnb.png" alt="Logo BoolBnb"/>
+            <img class="homepage-logo" src="/public/images/BoolBnb.png" alt="Logo BoolBnb" />
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +67,7 @@ export default {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 100% 100%;
   }
@@ -92,6 +93,7 @@ export default {
     opacity: 0;
     transform: translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -121,10 +123,10 @@ export default {
     opacity: 0;
     transform: scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
-
 </style>

@@ -7,28 +7,28 @@ export default {
 <template>
   <footer class="app-footer">
     <div class="container">
-      <div class="footer-top">       
-        <div class="footer-section footer-logo">
-          <img
-            src="/public/images/BoolBnb.png" alt="BoolBnB Logo" class="footer-logo-img" />          
+      <div class="footer-content">
+        <!-- Logo -->
+        <div class="footer-logo">
+          <img src="/images/BoolBnb.png" alt="BoolBNB Logo" class="footer-logo-img" />
         </div>
-       
+
         <div class="footer-section footer-links">
           <h4 class="footer-title">Quick Links</h4>
           <ul>
-            <li>
-              <router-link class="footer-link" :to="{ name: 'homepage' }">Home</router-link>
-            </li>
-            <li>
-              <router-link class="footer-link" :to="{ name: 'about' }">About</router-link>
-            </li>
-            <li>
-              <router-link class="footer-link" :to="{ name: 'properties' }">Properties List</router-link>
-            </li>
+            <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'homepage' }">
+              Home
+            </router-link>
+            <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'about' }">
+              About
+            </router-link>
+            <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'properties' }">
+              Properties List
+            </router-link>
           </ul>
         </div>
 
-        
+
         <div class="footer-section footer-social">
           <h4 class="footer-title">Follow Us</h4>
           <div class="social-icons">
@@ -48,7 +48,7 @@ export default {
         </div>
       </div>
 
-      
+
       <div class="footer-bottom">
         <p>&copy; 2024 BoolBnB. All Rights Reserved.</p>
       </div>
@@ -57,7 +57,6 @@ export default {
 </template>
 
 <style scoped>
-
 :root {
   --primary-color: #0056b3;
   --secondary-color: #f8f9fa;
@@ -133,15 +132,32 @@ export default {
   text-decoration: underline;
 }
 
-.social-icons {
+.footer-social h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+
+}
+
+.footer-social .social-icons {
   display: flex;
   gap: 15px;
+
+}
+
+.fa-instagram {
+  --fa: "\f16d";
+  color: orangered;
+}
+
+.fa-x-twitter {
+  --fa: "\e61b";
+  color: black;
 }
 
 .social-link {
   font-size: 20px;
-  color: var(--text-light);
-  transition: color 0.3s ease, transform 0.3s ease;
+
 }
 
 .social-link:hover {
@@ -151,7 +167,9 @@ export default {
 
 .footer-bottom {
   text-align: center;
+  margin-top: 30px;
   font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }

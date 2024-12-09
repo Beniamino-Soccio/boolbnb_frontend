@@ -10,29 +10,30 @@ export default {
 </script>
 
 <template>
-  <header class="app-header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container d-flex justify-content-between align-items-center">      
-        <figure class="logo-container m-0">
-          <img src="/public/images/BoolBnb.png" alt="logo BoolBnB" id="logo-header" class="logo"/>
-        </figure>       
-        <div
-          class="collapse navbar-collapse d-flex justify-content-center align-items-center"
-          id="navbarNav" >
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container d-flex justify-content-between align-items-center">
+
+        <figure>
+          <img src="/public/images/BoolBnb.png" alt="logo BoolBnB" id="logo-header">
+        </figure>
+        <div class="collapse navbar-collapse d-flex justify-content-center align-items-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase" aria-current="page":to="{ name: 'homepage' }"> Home </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase" aria-current="page" :to="{ name: 'homepage' }">
+                Home </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase mx-4" aria-current="page" :to="{ name: 'about' }"> About </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase mx-4" aria-current="page"
+                :to="{ name: 'about' }"> About </router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="nav-link fw-bold fs-5 text-uppercase" aria-current="page" :to="{ name: 'properties' }"> Properties List </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase" aria-current="page"
+                :to="{ name: 'properties' }"> Properties List </router-link>
             </li>
           </ul>
         </div>
-        
+
         <div class="right-header d-flex justify-content-center align-items-center">
           <button class="rent-btn btn">Rent with BnB</button>
         </div>
@@ -44,7 +45,7 @@ export default {
 <style scoped>
 .app-header {
   background: linear-gradient(90deg, #007bff, #0046d5);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow:0 8px 15px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
