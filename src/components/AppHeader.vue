@@ -2,39 +2,47 @@
 export default {
   name: "AppHeader",
   data() {
-    return {
-
-    }
-  }
-}
+    return {};
+  },
+};
 </script>
 
 <template>
-  <header>
+  <header class="app-header">
     <nav class="navbar navbar-expand-lg">
-      <div class="container d-flex justify-content-between align-items-center">
-
-        <figure>
-          <img src="/public/images/BoolBnb.png" alt="logo BoolBnB" id="logo-header">
+      <div class="container d-flex justify-content-between align-items-center">        
+        <figure class="logo-container mb-0">
+          <img src="/images/BoolBnb.png" alt="logo BoolBnB" class="logo" />
         </figure>
-        <div class="collapse navbar-collapse d-flex justify-content-center align-items-center" id="navbarNav">
+
+        
+        <button
+          class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase" aria-current="page" :to="{ name: 'homepage' }">
-                Home </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase" :to="{ name: 'homepage' }">
+                Home
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase mx-4" aria-current="page"
-                :to="{ name: 'about' }"> About </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase mx-4" :to="{ name: 'about' }">
+                About
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase" aria-current="page"
-                :to="{ name: 'properties' }"> Properties List </router-link>
+              <router-link class="nav-link fw-bold fs-5 text-uppercase" :to="{ name: 'properties' }">
+                Properties List
+              </router-link>
             </li>
           </ul>
         </div>
 
-        <div class="right-header d-flex justify-content-center align-items-center">
+       
+        <div class="right-header">
           <button class="rent-btn btn">Rent with BnB</button>
         </div>
       </div>
@@ -43,15 +51,15 @@ export default {
 </template>
 
 <style scoped>
+
 .app-header {
   background: linear-gradient(90deg, #007bff, #0046d5);
-  box-shadow:0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: all 0.3s ease;
 }
-
 
 .app-header:hover {
   background: linear-gradient(90deg, #0056b3, #002d80);
@@ -61,13 +69,15 @@ export default {
 .logo-container {
   margin: 0;
 }
+
 .logo {
-  width: 90px;
+  width: 100px;
   transition: transform 0.3s ease, filter 0.3s ease;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
+
 .logo:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
 }
 
@@ -92,8 +102,10 @@ export default {
   transition: all 0.3s ease;
   border-radius: 5px;
   letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
+}
+
+.nav-link:hover {
+  color: #ffd700;
 }
 
 .nav-link::after {
@@ -112,9 +124,6 @@ export default {
   left: 0;
 }
 
-.nav-link:hover {
-  color: #ffd700;
-}
 
 .rent-btn {
   background-color: #ffd700;
