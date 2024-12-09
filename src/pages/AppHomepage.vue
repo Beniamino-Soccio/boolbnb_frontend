@@ -23,6 +23,7 @@ export default {
 
       axios.post(store.apiUrl, formData)
         .then((response) => {
+          store.searchedBool = false;
           console.log(response.data.result);
           store.property = response.data.result;
           if (response.data.result.length > 0) {

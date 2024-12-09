@@ -1,0 +1,61 @@
+<script>
+import PropertiesListItem from './PropertiesListItem.vue';
+import BasicFilter from './BasicFilter.vue';
+import AppLoader from './AppLoader.vue';
+import { store } from '../js/store';
+
+
+export default {
+    name: 'PropertyList',
+    components: {
+        PropertiesListItem,
+        BasicFilter,
+        AppLoader,
+    },
+    data() {
+        return {
+            propertyList: [],
+            apiUrl: 'http://127.0.0.1:8000/api/admin/properties',
+            store,
+        }
+    },
+    props: {
+        withShow: {
+            required: false,
+            type: Boolean,
+        }
+    },
+    methods: {
+    },
+    computed: {
+    }
+}
+</script>
+
+<template>
+
+
+    <section class="col-12 container justify-content-between">
+        <div class="searched-property" v-if="store.searchedBool">
+            <div class="d-flex justify-content-center flex-wrap">
+                <PropertiesListItem v-for="property in store.property" :key="property.id" :propertyObj="property"
+                    @click="show(property.id)" />
+            </div>
+        </div>
+        <div class="no-result text-center" v-else>
+            <h2 class="py-5">Sorry, We didn't found any properties near this location you searched.</h2>
+        </div>
+    </section>
+
+</template>
+
+<style scoped>
+div.card:hover {
+    background-color: #a8e2dd;
+    color: #0e2a35;
+}
+
+.card {
+    max-width: 400px;
+}
+</style>

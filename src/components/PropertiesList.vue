@@ -62,16 +62,6 @@ export default {
     </section>
 
     <section class="col-12 container justify-content-between" v-else>
-        <div class="searched-property" v-if="store.searchedBool">
-            <h2>Searched Property</h2>
-            <div class="d-flex justify-content-center flex-wrap">
-                <PropertiesListItem v-for="property in store.property" :key="property.id" :propertyObj="property"
-                    @click="show(property.id)" />
-            </div>
-        </div>
-        <div class="no-result text-center" v-else>
-            <h2>Not found any properties near this location you searched.</h2>
-        </div>
         <div class="all-properties">
             <h2>All Properties</h2>
             <div class="d-flex justify-content-center flex-wrap">

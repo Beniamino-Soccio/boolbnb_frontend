@@ -63,7 +63,7 @@ export default {
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
                 aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
             <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-                :to="{ 'name': 'properties' }">
+                :to="{ 'name': 'filtered-properties' }">
                 Search
             </router-link>
         </div>
@@ -71,7 +71,7 @@ export default {
             <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
                 <span @click="selectAnAddress(address)">{{
                     address
-                }}</span>
+                    }}</span>
             </div>
         </div>
     </div>
