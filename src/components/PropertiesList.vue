@@ -64,8 +64,8 @@ export default {
     <section class="col-12 container justify-content-between" v-else>
         <div class="all-properties">
             <h2>All Properties</h2>
-            <div class="d-flex justify-content-center flex-wrap">
-                <PropertiesListItem v-for="property in propertyList" :key="property.id" :propertyObj="property"
+            <div class="row d-flex justify-content-center ">
+                <PropertiesListItem  class="card col-4 mx-3 border-0 p-0" v-for="property in propertyList" :key="property.id" :propertyObj="property"
                     @click="show(property.id)" />
             </div>
         </div>

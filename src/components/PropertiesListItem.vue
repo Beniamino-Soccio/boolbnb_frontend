@@ -22,6 +22,7 @@ export default {
                 <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
                 <h5 class="card-title px-3 mt-3">{{ propertyObj.title }} </h5>
                 <p class="card-text px-3 mt-4"> {{ propertyObj.description }} </p>
+                <p class="card-text px-3 mt-4"> {{ propertyObj.address }} </p>
             </div>
             <div class="card-body back">
                 <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
@@ -34,6 +35,7 @@ export default {
 
         </div>
     </div>
+    
 
 
     
