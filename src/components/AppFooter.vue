@@ -10,21 +10,21 @@ export default {
       <div class="footer-content">
         <!-- Logo -->
         <div class="footer-logo">
-          <img src="/public/images/BoolBnb.png" alt="BoolBNB Logo" class="footer-logo-img" />
+          <img src="/images/BoolBnb.png" alt="BoolBNB Logo" class="footer-logo-img" />
         </div>
         <!-- Links -->
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
             <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'homepage' }">
-                Home
-              </router-link>            
-              <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'about' }">
-                About
-              </router-link>
-              <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'properties' }">
-                Properties List
-              </router-link>
+              Home
+            </router-link>
+            <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'about' }">
+              About
+            </router-link>
+            <router-link class="nav-link  fs-5" aria-current="page" :to="{ 'name': 'properties' }">
+              Properties List
+            </router-link>
           </ul>
         </div>
         <!-- Social -->
@@ -128,28 +128,28 @@ export default {
   font-size: 18px;
   margin-bottom: 15px;
   text-transform: uppercase;
- 
+
 }
 
 .footer-social .social-icons {
   display: flex;
   gap: 15px;
-  
+
 }
 
 .fa-instagram {
-    --fa: "\f16d";
-    color: orangered;
+  --fa: "\f16d";
+  color: orangered;
 }
 
 .fa-x-twitter {
-    --fa: "\e61b";
-    color: black;
+  --fa: "\e61b";
+  color: black;
 }
 
 .social-link {
   font-size: 20px;
-  
+
 }
 
 .social-link:hover {
@@ -159,7 +159,7 @@ export default {
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
-  font-size: 14px;  
+  font-size: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 15px;
 }
