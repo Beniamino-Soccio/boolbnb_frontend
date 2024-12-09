@@ -69,6 +69,9 @@ export default {
                     @click="show(property.id)" />
             </div>
         </div>
+        <div class="no-result text-center" v-else>
+            <h2>Not found any properties near this location you searched.</h2>
+        </div>
         <div class="all-properties">
             <h2>All Properties</h2>
             <div class="d-flex justify-content-center flex-wrap">
