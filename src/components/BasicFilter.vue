@@ -58,26 +58,49 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar navbar-light">
-        <div class="container-fluid">
-            <div class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search a property.." v-model="searchProperty"
-                    aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
-                <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-                    :to="{ 'name': 'properties' }">
-                    Search
-                </router-link>
-            </div>
-            <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
-                <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
-                    <span @click="selectAnAddress(address)">{{
-                        address
-                    }}</span>
-                </div>
+    <div class="container-fluid" id="search-bar">
+        <div class="d-flex">
+            <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
+                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
+            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
+                :to="{ 'name': 'properties' }">
+                Search
+            </router-link>
+        </div>
+        <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
+            <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
+                <span @click="selectAnAddress(address)">{{
+                    address
+                }}</span>
             </div>
         </div>
-    </nav>
-
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#search-bar {
+    display: flex;
+    max-width: 500px;
+    flex-direction: column;
+    position: relative;
+
+    .results-address {
+        position: absolute;
+        top: 38px;
+        width: 78%;
+
+        .address {
+            width: 100%;
+            color: black;
+            background-color: white;
+            cursor: pointer;
+            padding: 3px 0;
+            border-top: 1px solid black;
+        }
+    }
+}
+
+.br {
+    border: 1px dashed black;
+}
+</style>
