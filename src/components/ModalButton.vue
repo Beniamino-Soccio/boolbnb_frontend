@@ -24,7 +24,7 @@ export default {
             <div class="modal-dialog modal-dialog-centered" @click.stop>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modale Vuota</h5>
+                        <h5 class="modal-title">Invia un messaggio!</h5>
                         <button type="button" class="btn-close" @click="closeModal"></button>
                     </div>
                     <div class="modal-body">
