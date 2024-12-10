@@ -20,7 +20,7 @@ export default {
         getSingleProperty() {
             axios.get(`${this.apiUrl}/${this.$route.params.id}`)
                 .then((response) => {
-                    console.log(response.data.results);
+                    console.log(response.data.results.id);
                     this.singleProperty = response.data.results;
                 })
                 .catch(function (error) {

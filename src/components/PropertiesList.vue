@@ -81,7 +81,7 @@ div.card:hover {
 .card {
     max-width: 400px;
     max-height: 400px;
-    margin-bottom: 90px;
+    margin-bottom: 500px;
     /* box-shadow: 10px 10px 5px #dedede; */
 }
 
