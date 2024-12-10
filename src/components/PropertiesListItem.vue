@@ -11,10 +11,6 @@ export default {
             type: Object,
             required: true,
         },
-        servicesObj: {
-            type: Object,
-            require: true,
-        }
     },
 }
 </script>
@@ -38,8 +34,9 @@ export default {
 
                 <p class="card-text px-3 mt-4 fw-bold">Services:</p>
                 <ul class="px-3">
-                    <li v-for="service in services" :key="service.id">
-                        <i class={{ servicesObj.icon_url }}></i> {{ servicesObj.name }}
+                    <li v-for="service in propertyObj.services" :key="service.id">
+                        <i :class="service.icon_url"></i> 
+                        {{ service.name }}
                     </li>
                 </ul>
 
