@@ -11,6 +11,10 @@ export default {
             type: Object,
             required: true,
         },
+        servicesObj: {
+            type: Object,
+            require: true,
+        }
     },
 }
 </script>
@@ -31,12 +35,19 @@ export default {
                 <p class="card-text px-3 "> <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }} </p>
                 <p class="card-text px-3 "> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
                 <p class="card-text px-3 "> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
+                <p class="card-text px-3 "> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
+
+                <p class="card-text px-3 mt-4 fw-bold">Services:</p>
+                <ul class="px-3">
+                    <li v-for="service in services" :key="service.id">
+                        <i class={{ servicesObj.icon_url }}></i> {{ servicesObj.name }}
+                    </li>
+                </ul>
+
             </div>
 
         </div>
     </div>
-    
-
 
     
 </template>
