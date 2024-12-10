@@ -2,11 +2,13 @@
 import axios from 'axios';
 
 import PropertiesListItem from '../components/PropertiesListItem.vue';
+import ModalButton from '../components/ModalButton.vue';
 
 export default {
     name: "AppSingleProperty",
     components: {
         PropertiesListItem,
+        ModalButton,
     },
     data() {
         return {
@@ -42,6 +44,7 @@ export default {
 <template>
     <div class="container">
         <PropertiesListItem :propertyObj="singleProperty" />
+        <ModalButton />
     </div>
 
 </template>
