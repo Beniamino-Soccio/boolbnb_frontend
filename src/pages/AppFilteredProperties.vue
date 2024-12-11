@@ -43,6 +43,12 @@ export default {
                 beds: this.formData.beds,
             }
 
+            formData.latitude = this.formData.latitude;
+            formData.longitude = this.formData.longitude;
+            formData.radius = this.formData.radius;
+            formData.rooms = this.formData.rooms;
+            formData.beds = this.formData.beds;
+
             axios.post(store.apiUrl, formData)
                 .then((response) => {
                     store.searchedBool = false;

@@ -90,7 +90,7 @@ export default {
         <div class="d-flex">
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
                 aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
-            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress(); searchAddress()"
+            <router-link class="btn btn-dark" type="submit" @click="[saveDataAddress(), searchAddress()]"
                 aria-current="page" :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
             </router-link>
             <button class="btn btn-dark" type="button" @click="toggleFilterPopup">

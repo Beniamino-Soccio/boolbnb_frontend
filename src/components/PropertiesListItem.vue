@@ -20,6 +20,9 @@ export default {
         <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
         <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
         <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
+        <p class="card-text px-3 mt-2 text-center"> This property is {{ propertyObj.distance.toFixed(2) }}km from the
+            place you
+            searched </p>
         <!--<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
         <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
         <p class="card-text px-3"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
@@ -36,12 +39,12 @@ export default {
             </li>
         </ul>-->
         <div class="mb-3 d-flex justify-content-center">
-            <router-link class="linkstyle" :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
+            <router-link class="linkstyle" :to="{ 'name': 'properties.show', params: { id: propertyObj.id } }">
                 <button class="btnmodal">More info!</button>
             </router-link>
         </div>
-        
-    </div> 
+
+    </div>
 </template>
 
 <style scoped lang="scss">
@@ -67,23 +70,25 @@ img {
 }
 
 .btnmodal {
-  background-color: white;
-  padding: 5px 20px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-//   justify-content: center;
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 2px 6px 0 1px #007bff;
-  transition: all 0.1s ease-in-out;
+    background-color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    //   justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 2px 6px 0 1px #007bff;
+    transition: all 0.1s ease-in-out;
 }
+
 .btnmodal:active {
-  transform: translateY(10px);
-  box-shadow: 0 0 0 0 #0046d5;
+    transform: translateY(10px);
+    box-shadow: 0 0 0 0 #0046d5;
 }
-.linkstyle{
+
+.linkstyle {
     color: #000;
     text-decoration: none;
 }
