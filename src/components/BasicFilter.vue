@@ -2,14 +2,12 @@
     <div class="container-fluid" id="search-bar">
         <div class="d-flex">
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
-                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
-            <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
+                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">            
+            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
+             :to="{ 'name': 'filtered-properties' }"> Search </router-link>
+             <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
                 Filters
             </button>
-            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-                :to="{ 'name': 'filtered-properties' }">
-                Search
-            </router-link>
         </div>        
         
         <div class="filter-popup" v-if="showFilters">
@@ -220,5 +218,9 @@ export default {
 label {
     display: inline-block;
     color: black;
+}
+
+.btn{
+    margin: 4px;
 }
 </style>
