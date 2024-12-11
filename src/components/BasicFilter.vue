@@ -176,18 +176,17 @@ export default {
 
 .results-address {
     position: absolute;
-    top: 60px;
-    left: 50%;
+    top: 48px;
+    left: 219px;
     transform: translateX(-50%);
-    background-color: #ffffff;   
-    z-index: 2000;
-    width: 80%; 
-    max-width: 600px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);     
-    overflow-y: auto; 
-    max-height: 300px; 
-    font-size: 0.95rem; 
+    background-color: #ffffff;
+    width: 412px;
+    max-width: 600px;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    max-height: 300px;
+    font-size: 0.95rem;
 }
 
 .address {
