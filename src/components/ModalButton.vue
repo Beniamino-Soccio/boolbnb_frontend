@@ -11,12 +11,8 @@ export default {
         email: "",
         message: "",
       },
-      errors: {
-        name: null,
-        lastName: null,
-        email: null,
-        message: null,
-      },
+      errors: {}, // Per validazione lato client
+      serverError: null, // Per eventuali errori lato server
     };
   },
   methods: {
@@ -27,65 +23,6 @@ export default {
       this.isModalVisible = false;
       this.resetForm();
     },
-    sendMessage() {
-      axios.post('http://127.0.0.1:8000/api/messages', this.form)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    validateForm() {
-      // Reset errors
-      this.errors = {
-        name: null,
-        lastName: null,
-        email: null,
-        message: null,
-      };
-
-      let isValid = true;
-
-      // Validate Name
-      if (!this.form.name.trim()) {
-        this.errors.name = "Name is required.";
-        isValid = false;
-      }
-      if (this.form.name.length < 3) {
-        this.errors.name = "Name must have at least 3 characters"
-      }
-
-      // Validate Last Name
-      if (!this.form.lastName.trim()) {
-        this.errors.lastName = "Last Name is required.";
-        isValid = false;
-      }
-      if (this.form.name.length < 2) {
-        this.errors.name = "Last name must have at least 2  characters"
-      }
-
-      // Validate Email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!this.form.email.trim()) {
-        this.errors.email = "E-mail is required.";
-        isValid = false;
-      } else if (!emailRegex.test(this.form.email)) {
-        this.errors.email = "Invalid E-mail format.";
-        isValid = false;
-      }
-
-      // Validate Message
-      if (!this.form.message.trim()) {
-        this.errors.message = "Message is required.";
-        isValid = false;
-      }
-
-      if (isValid) {
-        alert("Message sent successfully!");
-        this.closeModal();
-      }
-    },
     resetForm() {
       this.form = {
         name: "",
@@ -93,12 +30,47 @@ export default {
         email: "",
         message: "",
       };
-      this.errors = {
-        name: null,
-        lastName: null,
-        email: null,
-        message: null,
-      };
+      this.errors = {};
+      this.serverError = null;
+    },
+    validateForm() {
+      // Reset errori
+      this.errors = {};
+
+      // Validazioni
+      if (this.form.name.length < 3 || this.form.name.length > 50) {
+        this.errors.name = "Name must be between 3 and 50 characters.";
+      }
+      if (this.form.lastName.length < 3 || this.form.lastName.length > 50) {
+        this.errors.lastName = "Last Name must be between 3 and 50 characters.";
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
+        this.errors.email = "Invalid email format.";
+      }
+      if (this.form.message.length < 10 || this.form.message.length > 500) {
+        this.errors.message = "Message must be between 10 and 500 characters.";
+      }
+
+      return Object.keys(this.errors).length === 0; // Form valido se non ci sono errori
+    },
+    async sendMessage() {
+      if (!this.validateForm()) {
+        return; // Blocca invio se non valido
+      }
+
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/api/messages', this.form);
+        console.log(response.data);
+        this.closeModal();
+        alert("Message sent successfully!");
+      } catch (error) {
+        if (error.response && error.response.data) {
+          this.serverError = error.response.data.message || "Failed to send message.";
+        } else {
+          this.serverError = "An unexpected error occurred.";
+        }
+        console.error(error);
+      }
     },
   },
 };
@@ -107,7 +79,7 @@ export default {
 <template>
   <div class="container d-flex justify-content-end m-0">
     <button type="button" class="btnmodal" @click="openModal">
-      Sends a message to the host!
+      Send a message to the host!
     </button>
     <div class="modal fade" tabindex="-1" :class="{ show: isModalVisible }"
       :style="isModalVisible ? 'display: block;' : 'display: none;'">
@@ -118,7 +90,8 @@ export default {
             <button type="button" class="btn-close" @click="closeModal"></button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="validateForm">
+            <form @submit.prevent="sendMessage">
+              <div v-if="serverError" class="alert alert-danger">{{ serverError }}</div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
                 <input type="text" class="form-control" v-model="form.name" :class="{ 'is-invalid': errors.name }" />
@@ -127,7 +100,7 @@ export default {
                 </div>
               </div>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Last Name:</label>
+                <label for="recipient-last-name" class="col-form-label">Last Name:</label>
                 <input type="text" class="form-control" v-model="form.lastName"
                   :class="{ 'is-invalid': errors.lastName }" />
                 <div class="invalid-feedback" v-if="errors.lastName">
@@ -153,7 +126,7 @@ export default {
                 <button type="button" class="btnmodal" @click="closeModal">
                   Close
                 </button>
-                <button type="submit" class="btnmodal" @click="sendMessage">
+                <button type="submit" class="btnmodal">
                   Send message
                 </button>
               </div>
@@ -187,12 +160,22 @@ export default {
   box-shadow: 0 0 0 0 #0046d5;
 }
 
-.is-invalid {
-  border-color: #dc3545;
-}
-
 .invalid-feedback {
   color: #dc3545;
   font-size: 0.875em;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.is-valid {
+  border-color: green;
 }
 </style>
