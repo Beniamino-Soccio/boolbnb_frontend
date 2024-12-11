@@ -1,5 +1,3 @@
-
-
 <script>
 import { store } from '../js/store';
 import { important } from '../js/important';
@@ -207,6 +205,42 @@ export default {
     font-weight: 800;
     color: black;
  }
+ .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem; 
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6; 
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: all 0.2s ease-in-out; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.form-control:hover {
+    border-color: var(--bs-primary); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.form-control:focus {
+    border-color: var(--bs-primary);
+    outline: none; 
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); 
+}
+
+
+.form-control:disabled {
+    background-color: var(--bs-secondary-bg);
+    color: var(--bs-secondary-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 
  .form-check {
     display: block;
