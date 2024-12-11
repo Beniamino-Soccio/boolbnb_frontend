@@ -59,7 +59,7 @@ export default {
       }
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/messages', this.form);
+        const response = await axios.post('http://127.0.0.1:8000/api/admin/messages', this.form);
         console.log(response.data);
         this.closeModal();
         alert("Message sent successfully!");
