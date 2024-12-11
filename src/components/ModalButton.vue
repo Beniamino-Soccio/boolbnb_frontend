@@ -6,10 +6,11 @@ export default {
     return {
       isModalVisible: false,
       form: {
-        name: "",
-        lastName: "",
-        email: "",
+        sender_name: "",
+        sender_last_name: "",
+        sender_email: "",
         message: "",
+        property_id: "",
       },
       errors: {}, // Per validazione lato client
       serverError: null, // Per eventuali errori lato server
@@ -25,10 +26,11 @@ export default {
     },
     resetForm() {
       this.form = {
-        name: "",
-        lastName: "",
-        email: "",
+        sender_name: "",
+        sender_last_name: "",
+        sender_email: "",
         message: "",
+        property_id: "",
       };
       this.errors = {};
       this.serverError = null;
@@ -38,14 +40,17 @@ export default {
       this.errors = {};
 
       // Validazioni
-      if (this.form.name.length < 3 || this.form.name.length > 50) {
-        this.errors.name = "Name must be between 3 and 50 characters.";
+      if (this.form.sender_name.length < 3 || this.form.sender_name.length > 50) {
+        this.errors.sender_name = "Name must be between 3 and 50 characters.";
       }
-      if (this.form.lastName.length < 3 || this.form.lastName.length > 50) {
-        this.errors.lastName = "Last Name must be between 3 and 50 characters.";
+      if (this.form.sender_last_name.length < 3 || this.form.sender_last_name.length > 50) {
+        this.errors.sender_last_name = "Last Name must be between 3 and 50 characters.";
       }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
-        this.errors.email = "Invalid email format.";
+      if (this.form.property_id < 1) {
+        this.errors.property_id = "Add a valid property ID.";
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.sender_email)) {
+        this.errors.sender_email = "Invalid email format.";
       }
       if (this.form.message.length < 10 || this.form.message.length > 500) {
         this.errors.message = "Message must be between 10 and 500 characters.";
@@ -94,24 +99,25 @@ export default {
               <div v-if="serverError" class="alert alert-danger">{{ serverError }}</div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" v-model="form.name" :class="{ 'is-invalid': errors.name }" />
-                <div class="invalid-feedback" v-if="errors.name">
-                  {{ errors.name }}
-                </div>
+                <input type="text" class="form-control" v-model="form.sender_name" :class="{ 'is-invalid': errors.sender_name }" />
+                <div class="invalid-feedback" v-if="errors.sender_name">{{ errors.sender_name }}</div>
               </div>
               <div class="mb-3">
                 <label for="recipient-last-name" class="col-form-label">Last Name:</label>
-                <input type="text" class="form-control" v-model="form.lastName"
-                  :class="{ 'is-invalid': errors.lastName }" />
-                <div class="invalid-feedback" v-if="errors.lastName">
-                  {{ errors.lastName }}
-                </div>
+                <input type="text" class="form-control" v-model="form.sender_last_name" :class="{ 'is-invalid': errors.sender_last_name }" />
+                <div class="invalid-feedback" v-if="errors.sender_last_name">{{ errors.sender_last_name }}</div>
               </div>
               <div class="mb-3">
                 <label for="recipient-email" class="col-form-label">E-mail:</label>
-                <input type="email" class="form-control" v-model="form.email" :class="{ 'is-invalid': errors.email }" />
-                <div class="invalid-feedback" v-if="errors.email">
-                  {{ errors.email }}
+                <input type="text" class="form-control" v-model="form.sender_email" :class="{ 'is-invalid': errors.sender_email }" />
+                <div class="invalid-feedback" v-if="errors.sender_email">{{ errors.sender_email }}</div>
+              </div>
+              <div class="mb-3">
+                <label for="recipient-property_id" class="col-form-label">Property id:</label>
+                <input type="number" class="form-control" v-model="form.property_id"
+                  :class="{ 'is-invalid': errors.property_id }" />
+                <div class="invalid-feedback" v-if="errors.property_id">
+                  {{ errors.property_id }}
                 </div>
               </div>
               <div class="mb-3">
@@ -126,7 +132,7 @@ export default {
                 <button type="button" class="btnmodal" @click="closeModal">
                   Close
                 </button>
-                <button type="submit" class="btnmodal">
+                <button type="button" class="btnmodal" @click="sendMessage">
                   Send message
                 </button>
               </div>
