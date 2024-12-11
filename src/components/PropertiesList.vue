@@ -64,7 +64,7 @@ export default {
     <section class="col-12 container justify-content-between" v-else>
         <div class="all-properties">
             <div class="row d-flex justify-content-center ">
-                <PropertiesListItem  class="card col-4 mx-3 border-0 p-0" v-for="property in propertyList" :key="property.id" :propertyObj="property"
+                <PropertiesListItem  class="card col-4 mx-3 p-0" v-for="property in propertyList" :key="property.id" :propertyObj="property"
                     @click="show(property.id)" />
             </div>
         </div>
@@ -80,8 +80,7 @@ div.card:hover {
 
 .card {
     max-width: 400px;
-    max-height: 400px;
-    margin-bottom: 500px;
+    margin-bottom: 30px;
     /* box-shadow: 10px 10px 5px #dedede; */
 }
 

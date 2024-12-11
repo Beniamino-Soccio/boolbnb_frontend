@@ -20,8 +20,8 @@ export default {
         <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
         <h5 class="card-title px-3 mt-3">{{ propertyObj.title }} </h5>
         <p class="card-text px-3 mt-4"> {{ propertyObj.description }} </p>
-        <p class="card-text px-3 mt-4"> {{ propertyObj.address }} </p>
-        <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
+        <p class="card-text px-3 mt-2"> {{ propertyObj.address }} </p>
+        <!-- <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
         <p class="card-text px-3"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
         <p class="card-text px-3 "> <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }} </p>
         <p class="card-text px-3 "> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
@@ -33,12 +33,15 @@ export default {
                 <i :class="service.icon_url"></i> 
                 {{ service.name }}
             </li>
-        </ul>
-        <button class="btnmodal">
-            <router-link :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
-                More info!
-            </router-link>
-        </button>
+        </ul>-->
+        <div class="d-flex justify-content-center mb-3">
+            <button class="btnmodal">
+                <router-link class="linkstyle" :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
+                    More info!
+                </router-link>
+            </button>
+        </div> 
+        
     </div> 
 </template>
 
@@ -66,7 +69,7 @@ img {
 
 .btnmodal {
   background-color: white;
-  padding: 10px 25px;
+  padding: 5px 20px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -76,9 +79,14 @@ img {
   user-select: none;
   box-shadow: 0 8px 0 0 black;
   transition: all 0.1s ease-in-out;
+  max-width: 50%;
 }
 .btnmodal:active {
   transform: translateY(10px);
   box-shadow: 0 0 0 0 black;
+}
+.linkstyle{
+    color: black;
+    text-decoration: none;
 }
 </style>
