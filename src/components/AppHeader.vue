@@ -40,8 +40,6 @@ export default {
             </li>
           </ul>
         </div>
-
-
         <div class="right-header">
           <button class="rent-btn btn">Rent with BnB</button>
         </div>
