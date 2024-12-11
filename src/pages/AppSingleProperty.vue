@@ -1,13 +1,13 @@
 <script>
 import axios from 'axios';
 
-import PropertiesListItem from '../components/PropertiesListItem.vue';
+import AppPropertiesShow from '../components/AppPropertiesShow.vue';
 import ModalButton from '../components/ModalButton.vue';
 
 export default {
     name: "AppSingleProperty",
     components: {
-        PropertiesListItem,
+        AppPropertiesShow,
         ModalButton,
     },
     data() {
@@ -43,7 +43,7 @@ export default {
 
 <template>
     <div class="container">
-        <PropertiesListItem :propertyObj="singleProperty" />
+        <AppPropertiesShow :propertyObj="singleProperty" />
         <ModalButton />
     </div>
 
@@ -51,7 +51,7 @@ export default {
 
 
 <style scoped>
-.container{
+.container {
     margin: 100px auto;
 }
 </style>

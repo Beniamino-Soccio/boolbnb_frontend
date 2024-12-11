@@ -39,24 +39,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
-h5 {
-    cursor: pointer;
-}
-
-.card:hover .card-body>h5 {
-    color: #000;
-}
-
-.card:hover .card-body>p {
-    color: #000;
-}
-
 img {
     max-width: 400px;
     max-height: 210px;
-}
-
-.card-body {
-    padding: 0;
 }
 </style>
