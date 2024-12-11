@@ -208,10 +208,11 @@ export default {
   user-select: none;
   box-shadow: 0 8px 0 0 black;
   transition: all 0.1s ease-in-out;
+  color: #0046d5;
 }
 .btnmodal:active {
   transform: translateY(10px);
-  box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 #0046d5;
 }
 .is-invalid {
   border-color: #dc3545;

@@ -18,10 +18,10 @@ export default {
 <template>   
     <div class="card-body">
         <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
-        <h5 class="card-title px-3 mt-3">{{ propertyObj.title }} </h5>
-        <p class="card-text px-3 mt-4"> {{ propertyObj.description }} </p>
-        <p class="card-text px-3 mt-2"> {{ propertyObj.address }} </p>
-        <!-- <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
+        <h5 class="card-title px-3 ">{{ propertyObj.title }} </h5>
+        <p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
+        <!--<p class="card-text px-3 mt-2"> {{ propertyObj.address }} </p>
+        <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
         <p class="card-text px-3"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
         <p class="card-text px-3 "> <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }} </p>
         <p class="card-text px-3 "> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
@@ -77,16 +77,17 @@ img {
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 8px 0 0 black;
+  box-shadow: 0 8px 0 0 #0046d5;
   transition: all 0.1s ease-in-out;
+  border-color: #0046d5;
   max-width: 50%;
 }
 .btnmodal:active {
   transform: translateY(10px);
-  box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 #0046d5;
 }
 .linkstyle{
-    color: black;
+    color: #0046d5;
     text-decoration: none;
 }
 </style>
