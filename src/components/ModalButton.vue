@@ -27,7 +27,7 @@ export default {
       this.isModalVisible = false;
       this.resetForm();
     },
-    sendMessage(){
+    sendMessage() {
       axios.post('http://127.0.0.1:8000/api/messages', this.form)
         .then((response) => {
           console.log(response);
@@ -105,20 +105,12 @@ export default {
 </script>
 
 <template>
-  <div class="container d-flex justify-content-end">
-    <button
-      type="button"
-      class="mt-5 btnmodal"
-      @click="openModal"
-    >
-      Invia un messaggio all'host
+  <div class="container d-flex justify-content-end m-0">
+    <button type="button" class="btnmodal" @click="openModal">
+      Sends a message to the host!
     </button>
-    <div
-      class="modal fade"
-      tabindex="-1"
-      :class="{ show: isModalVisible }"
-      :style="isModalVisible ? 'display: block;' : 'display: none;'"
-    >
+    <div class="modal fade" tabindex="-1" :class="{ show: isModalVisible }"
+      :style="isModalVisible ? 'display: block;' : 'display: none;'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -129,47 +121,30 @@ export default {
             <form @submit.prevent="validateForm">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.name"
-                  :class="{ 'is-invalid': errors.name }"
-                />
+                <input type="text" class="form-control" v-model="form.name" :class="{ 'is-invalid': errors.name }" />
                 <div class="invalid-feedback" v-if="errors.name">
                   {{ errors.name }}
                 </div>
               </div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Last Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.lastName"
-                  :class="{ 'is-invalid': errors.lastName }"
-                />
+                <input type="text" class="form-control" v-model="form.lastName"
+                  :class="{ 'is-invalid': errors.lastName }" />
                 <div class="invalid-feedback" v-if="errors.lastName">
                   {{ errors.lastName }}
                 </div>
               </div>
               <div class="mb-3">
                 <label for="recipient-email" class="col-form-label">E-mail:</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  v-model="form.email"
-                  :class="{ 'is-invalid': errors.email }"
-                />
+                <input type="email" class="form-control" v-model="form.email" :class="{ 'is-invalid': errors.email }" />
                 <div class="invalid-feedback" v-if="errors.email">
                   {{ errors.email }}
                 </div>
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Message:</label>
-                <textarea
-                  class="form-control"
-                  v-model="form.message"
-                  :class="{ 'is-invalid': errors.message }"
-                ></textarea>
+                <textarea class="form-control" v-model="form.message"
+                  :class="{ 'is-invalid': errors.message }"></textarea>
                 <div class="invalid-feedback" v-if="errors.message">
                   {{ errors.message }}
                 </div>
@@ -187,11 +162,7 @@ export default {
         </div>
       </div>
     </div>
-    <div
-      class="modal-backdrop fade"
-      :class="{ show: isModalVisible }"
-      v-if="isModalVisible"
-    ></div>
+    <div class="modal-backdrop fade" :class="{ show: isModalVisible }" v-if="isModalVisible"></div>
   </div>
 </template>
 
@@ -206,16 +177,20 @@ export default {
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 8px 0 0 black;
+  box-shadow: 2px 6px 0 1px #007bff;
   transition: all 0.1s ease-in-out;
+  color: black;
 }
+
 .btnmodal:active {
   transform: translateY(10px);
-  box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 #0046d5;
 }
+
 .is-invalid {
   border-color: #dc3545;
 }
+
 .invalid-feedback {
   color: #dc3545;
   font-size: 0.875em;
