@@ -34,6 +34,11 @@ export default {
                 {{ service.name }}
             </li>
         </ul>
+        <button class="btnmodal">
+            <router-link :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
+                More info!
+            </router-link>
+        </button>
     </div> 
 </template>
 
@@ -57,5 +62,23 @@ img {
 
 .card-body{
     padding: 0;
+}
+
+.btnmodal {
+  background-color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 8px 0 0 black;
+  transition: all 0.1s ease-in-out;
+}
+.btnmodal:active {
+  transform: translateY(10px);
+  box-shadow: 0 0 0 0 black;
 }
 </style>
