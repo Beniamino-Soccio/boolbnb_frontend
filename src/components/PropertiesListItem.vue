@@ -19,7 +19,7 @@ export default {
     <div class="card-body">
         <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
         <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
-        <p class="card-text px-3 mt-2"> {{ propertyObj.address }} </p>
+        <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
         <!--<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
         <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
         <p class="card-text px-3"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
