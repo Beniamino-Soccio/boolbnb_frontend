@@ -76,7 +76,7 @@ img {
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 8px 0 0 #007bff;
+  box-shadow: 2px 6px 0 1px #007bff;
   transition: all 0.1s ease-in-out;
 }
 .btnmodal:active {
