@@ -44,7 +44,7 @@ export default {
             this.searchProperty = r;
             this.searchedAddressesName = [];
         },
-        saveDataAddress(a) {
+        saveDataAddress() {
             if (this.searchProperty.length < 2) {
                 console.log("nessun dato inserito nella ricerca");
             } else {
@@ -77,21 +77,26 @@ export default {
             console.log("Filtri resettati");
         },
     },
-};
+    computed: {
+        slug() {
+            return "?latitude=" + store.latitude + "&longitude=" + store.longitude + "&radius=" + store.radius;
+        }
+    }
+}
 </script>
 
 <template>
     <div class="container-fluid" id="search-bar">
         <div class="d-flex">
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
-                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">            
+                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
             <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-             :to="{ 'name': 'filtered-properties' }"> Search </router-link>
-             <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
+                :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search </router-link>
+            <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
                 Filters
             </button>
-        </div>        
-        
+        </div>
+
         <div class="filter-popup" v-if="showFilters">
             <div class="filter-popup-overlay" @click="toggleFilterPopup"></div>
             <div class="filter-popup-content">
@@ -123,7 +128,7 @@ export default {
                 <button class="btn btn-secondary" @click="resetFilters">Reset Filters</button>
             </div>
         </div>
-        
+
         <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
             <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
                 <span @click="selectAnAddress(address)">{{ address }}</span>
@@ -139,19 +144,19 @@ export default {
     position: relative;
     gap: 10px;
     width: 600px;
-    padding: 1rem; 
-    background-color: #fff; 
-    border: 6px solid #ffc107; 
-    border-radius: 8px; 
+    padding: 1rem;
+    background-color: #fff;
+    border: 6px solid #ffc107;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.3s ease; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 
 
 #search-bar:focus-within {
-    border-color: #ffdd57; 
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.6); 
+    border-color: #ffdd57;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
 }
 
 .filter-popup {
@@ -189,11 +194,11 @@ export default {
 
 .results-address {
     position: absolute;
-    top: 64px;
-    left: 216px;
+    top: 66px;
+    left: 189px;
     transform: translateX(-50%);
     background-color: #ffffff;
-    width: 394px;
+    width: 346px;
     max-width: 600px;
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -213,38 +218,39 @@ export default {
     background-color: #f8f9fa;
 }
 
- h3  {
+h3 {
     font-family: "PLayfair Display", sans-serif;
     font-weight: 800;
     color: black;
- }
- .form-control {
+}
+
+.form-control {
     display: block;
     width: 100%;
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.6; 
+    line-height: 1.6;
     color: var(--bs-body-color);
     background-color: var(--bs-body-bg);
     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
-    transition: all 0.2s ease-in-out; 
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 
 .form-control:hover {
-    border-color: var(--bs-primary); 
+    border-color: var(--bs-primary);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 
 .form-control:focus {
     border-color: var(--bs-primary);
-    outline: none; 
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); 
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
 
@@ -255,7 +261,7 @@ export default {
     opacity: 0.6;
 }
 
- .form-check {
+.form-check {
     display: block;
     min-height: 1.5rem;
     padding-left: 1.5em;
@@ -268,7 +274,18 @@ label {
     color: black;
 }
 
-.btn{
-    margin: 4px;
+.btn {
+    background-color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 2px 6px 0 1px #007bff;
+    transition: all 0.1s ease-in-out;
+    color: black;
+    margin: 7px;
 }
 </style>

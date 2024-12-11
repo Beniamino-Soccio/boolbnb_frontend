@@ -19,19 +19,30 @@ export default {
 </template>
 
 <style scoped lang="scss">
+/* HTML: <div class="loader"></div> */
 .loader {
-    width: 120px;
-    height: 20px;
-    background:
-        linear-gradient(#25b09b 0 0) left -40px top 0/40px 20px,
-        linear-gradient(#ddd 0 0) center/100% 50%;
-    background-repeat: no-repeat;
-    animation: l5 1s infinite linear;
+  width: 145px;
+  height: 33px;
+  border-radius: 20px;
+  color: #514b82;
+  border: 2px solid;
+  position: relative;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  margin: 2px;
+  inset: 0 100% 0 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: l6 2s infinite;
+}
+@keyframes l6 {
+    100% {inset:0}
 }
 
-@keyframes l5 {
-    100% {
-        background-position: right -40px top 0, center
-    }
-}
+
+
+
+
 </style>
