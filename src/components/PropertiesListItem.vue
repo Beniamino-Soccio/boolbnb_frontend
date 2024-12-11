@@ -35,13 +35,11 @@ export default {
                 {{ service.name }}
             </li>
         </ul>-->
-        <div class="d-flex justify-content-center mb-3">
-            <button class="btnmodal">
-                <router-link class="linkstyle" :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
-                    More info!
-                </router-link>
-            </button>
-        </div> 
+        <div class="mb-3 d-flex justify-content-center">
+            <router-link class="linkstyle" :to="{ 'name': 'properties.show', params:{id:propertyObj.id} }">
+                <button class="btnmodal">More info!</button>
+            </router-link>
+        </div>
         
     </div> 
 </template>
@@ -74,14 +72,13 @@ img {
   font-weight: bold;
   display: flex;
   align-items: center;
-  justify-content: center;
+//   justify-content: center;
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
   box-shadow: 0 8px 0 0 #0046d5;
   transition: all 0.1s ease-in-out;
   border-color: #0046d5;
-  max-width: 50%;
 }
 .btnmodal:active {
   transform: translateY(10px);
