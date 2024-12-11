@@ -148,11 +148,6 @@ export default {
 }
 
 
-#search-bar:hover {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
-    transform: translateY(-2px); 
-}
-
 
 #search-bar:focus-within {
     border-color: #ffdd57; 
