@@ -76,16 +76,15 @@ img {
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 8px 0 0 #0046d5;
+  box-shadow: 0 8px 0 0 #007bff;
   transition: all 0.1s ease-in-out;
-  border-color: #0046d5;
 }
 .btnmodal:active {
   transform: translateY(10px);
   box-shadow: 0 0 0 0 #0046d5;
 }
 .linkstyle{
-    color: #0046d5;
+    color: #000;
     text-decoration: none;
 }
 </style>

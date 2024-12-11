@@ -81,7 +81,7 @@ div.card:hover {
     max-width: 400px;
     margin-bottom: 30px;
     /* box-shadow: 10px 10px 5px #dedede; */
-    border-color: #0046d5;
+    border-color: #007bff;
 }
 
 </style>
