@@ -189,11 +189,11 @@ export default {
 
 .results-address {
     position: absolute;
-    top: 64px;
-    left: 216px;
+    top: 66px;
+    left: 189px;
     transform: translateX(-50%);
     background-color: #ffffff;
-    width: 394px;
+    width: 346px;
     max-width: 600px;
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
