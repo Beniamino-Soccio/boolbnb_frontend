@@ -177,13 +177,14 @@ export default {
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 8px 0 0 black;
+  box-shadow: 0 8px 0 0 #007bff;
   transition: all 0.1s ease-in-out;
+  color: black;
 }
 
 .btnmodal:active {
   transform: translateY(10px);
-  box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 #0046d5;
 }
 
 .is-invalid {
