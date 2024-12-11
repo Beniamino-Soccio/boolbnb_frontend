@@ -10,7 +10,7 @@ const routes = [
     { path: '/', component: AppHomepage, name: 'homepage' },
     { path: '/about', component: AppAbout, name: 'about' },
     { path: '/properties', component: AppProperties, name: 'properties' },
-    { path: '/filtered-properties', component: AppFilteredProperties, name: 'filtered-properties' },
+    { path: '/filtered-properties/:slug', component: AppFilteredProperties, name: 'filtered-properties' },
     { path: '/properties/:id', component: AppSingleProperty, name: "properties.show" },
 ]
 
