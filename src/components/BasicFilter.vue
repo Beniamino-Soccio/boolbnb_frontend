@@ -139,6 +139,19 @@ export default {
     position: relative;
     gap: 10px;
     width: 600px;
+    padding: 1rem; 
+    background-color: #fff; 
+    border: 6px solid #ffc107; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; 
+}
+
+
+
+#search-bar:focus-within {
+    border-color: #ffdd57; 
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.6); 
 }
 
 .filter-popup {
@@ -176,11 +189,11 @@ export default {
 
 .results-address {
     position: absolute;
-    top: 48px;
-    left: 219px;
+    top: 64px;
+    left: 216px;
     transform: translateX(-50%);
     background-color: #ffffff;
-    width: 412px;
+    width: 394px;
     max-width: 600px;
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
