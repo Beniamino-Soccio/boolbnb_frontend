@@ -13,9 +13,9 @@ export default {
             searchedAddressesName: [],
             showFilters: false,
             filters: {
-                radius: '',
-                rooms: '',
-                beds: '',
+                radius: '20',
+                rooms: '1',
+                beds: '1',
                 services: [],
             },
             availableServices: ['wifi', 'parking', 'pool', 'gym', 'petsAllowed'],
@@ -59,27 +59,27 @@ export default {
                 }
                 console.log("latituidne", store.latitude);
                 console.log("longitudine", store.longitude);
-                this.$emit('propertyCall');
             }
         },
+        searchAddress() {
+            this.$emit('propertyCall');
+            console.log('caio')
+        },
         applyFilters() {
-            store.filters = this.filters;
+            store.radius = this.filters.radius;
+            store.rooms = this.filters.rooms;
+            store.beds = this.filters.beds;
             this.showFilters = false;
             console.log("Filtri applicati:", this.filters);
         },
         resetFilters() {
-            this.filters = {
-                radius: '',
-                rooms: '',
-                beds: '',
-                services: [],
-            };
+            this.applyFilters;
             console.log("Filtri resettati");
         },
     },
     computed: {
         slug() {
-            return "?latitude=" + store.latitude + "&longitude=" + store.longitude + "&radius=" + store.radius;
+            return `?latitude=${store.latitude}&longitude=${store.longitude}&radius=${store.radius}&beds=${this.filters.beds}&rooms=${this.filters.rooms}`;
         }
     }
 }
@@ -89,9 +89,10 @@ export default {
     <div class="container-fluid" id="search-bar">
         <div class="d-flex">
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
-                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
-            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-                :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search </router-link>
+                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
+            <router-link class="btn btn-dark" type="submit" @click="saveDataAddress(); searchAddress()"
+                aria-current="page" :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
+            </router-link>
             <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
                 Filters
             </button>
@@ -129,7 +130,7 @@ export default {
             </div>
         </div>
 
-        <div class="results-address" :class="{ 'd-none': searchProperty === '' }">
+        <div class="results-address" :class="{ 'd-none': searchProperty === '' }" @click="saveDataAddress">
             <div class="address" :key="searchedAddresses[id].id" v-for="(address, id) in searchedAddressesName">
                 <span @click="selectAnAddress(address)">{{ address }}</span>
             </div>

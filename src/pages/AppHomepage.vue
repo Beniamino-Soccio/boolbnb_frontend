@@ -18,7 +18,9 @@ export default {
       const formData = {
         latitude: store.latitude,
         longitude: store.longitude,
-        radius: store.radius
+        radius: store.radius,
+        rooms: store.rooms,
+        beds: store.beds,
       }
 
       axios.post(store.apiUrl, formData)
@@ -53,7 +55,7 @@ export default {
           </p>
         </div>
       </div>
-      <BasicFilter @propertyCall="sendSearchParametres" />
+      <BasicFilter />
 
       <div class="row">
         <div class="col-12 py-5">

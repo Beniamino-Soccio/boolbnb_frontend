@@ -23,6 +23,10 @@ export default {
         withShow: {
             required: false,
             type: Boolean,
+        },
+        properties: {
+            required: true,
+            type: Array
         }
     },
     methods: {
@@ -38,7 +42,7 @@ export default {
     <section class="col-12 container justify-content-between">
         <div class="searched-property" v-if="store.searchedBool">
             <div class="d-flex justify-content-center flex-wrap">
-                <PropertiesListItem v-for="property in store.property" :key="property.id" :propertyObj="property"
+                <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property"
                     @click="show(property.id)" />
             </div>
         </div>
