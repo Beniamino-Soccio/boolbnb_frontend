@@ -34,7 +34,7 @@ export default {
             this.searchProperty = r;
             this.searchedAddressesName = [];
         },
-        saveDataAddress(a) {
+        saveDataAddress() {
             if (this.searchProperty.length < 2) {
                 console.log("nessun dato inserito nella ricerca");
             } else {
@@ -53,6 +53,11 @@ export default {
                 this.$emit('propertyCall');
             }
         }
+    },
+    computed: {
+        slug() {
+            return "?latitude=" + store.latitude + "&longitude=" + store.longitude + "&radius=" + store.radius;
+        }
     }
 }
 </script>
@@ -63,7 +68,7 @@ export default {
             <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
                 aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress">
             <router-link class="btn btn-dark" type="submit" @click="saveDataAddress" aria-current="page"
-                :to="{ 'name': 'filtered-properties' }">
+                :to="{ 'name': 'filtered-properties', params: { slug: slug } }">
                 Search
             </router-link>
         </div>
