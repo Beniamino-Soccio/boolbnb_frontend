@@ -33,11 +33,6 @@ export default {
                 About
               </router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link fw-bold fs-5 text-uppercase" :to="{ name: 'properties' }">
-                Properties List
-              </router-link>
-            </li>
           </ul>
         </div>
         <div class="right-header">

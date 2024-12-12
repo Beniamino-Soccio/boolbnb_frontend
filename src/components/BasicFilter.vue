@@ -13,10 +13,11 @@ export default {
             searchedAddressesName: [],
             showFilters: false,
             filters: {
+                latitude: '',
+                longitude: '',
                 radius: '20',
                 rooms: '1',
                 beds: '1',
-                services: [],
             },
             availableServices: ['wifi', 'parking', 'pool', 'gym', 'petsAllowed'],
         };
@@ -50,36 +51,46 @@ export default {
             } else {
                 for (let i = 0; i < this.searchedAddresses.length; i++) {
                     if (this.searchProperty == this.searchedAddresses[i].address.freeformAddress) {
-                        store.latitude = this.searchedAddresses[i].position.lat;
-                        store.longitude = this.searchedAddresses[i].position.lng;
+                        this.filters.latitude = this.searchedAddresses[i].position.lat;
+                        this.filters.longitude = this.searchedAddresses[i].position.lng;
                     } else if (i === this.searchedAddresses.length - 1) {
-                        store.latitude = this.searchedAddresses[0].position.lat;
-                        store.longitude = this.searchedAddresses[0].position.lng;
+                        this.filters.latitude = this.searchedAddresses[0].position.lat;
+                        this.filters.longitude = this.searchedAddresses[0].position.lng;
                     }
                 }
-                console.log("latituidne", store.latitude);
-                console.log("longitudine", store.longitude);
+                console.log("latituidne", this.filters.latitude);
+                console.log("longitudine", this.filters.longitude);
             }
         },
         searchAddress() {
-            this.$emit('propertyCall');
-            console.log('caio')
+            const formData = {
+                latitude: this.filters.latitude,
+                longitude: this.filters.longitude,
+                radius: this.filters.radius,
+                rooms: this.filters.rooms,
+                beds: this.filters.beds,
+            }
+            console.log('EMIT', formData);
+            this.$emit('propertyCall', formData);
         },
         applyFilters() {
-            store.radius = this.filters.radius;
-            store.rooms = this.filters.rooms;
-            store.beds = this.filters.beds;
+            this.filters.radius = this.filters.radius;
+            this.filters.rooms = this.filters.rooms;
+            this.filters.beds = this.filters.beds;
             this.showFilters = false;
             console.log("Filtri applicati:", this.filters);
         },
         resetFilters() {
-            this.applyFilters;
-            console.log("Filtri resettati");
+            this.filters.radius = 20;
+            this.filters.rooms = 1;
+            this.filters.beds = 1;
+            console.log("Filtri resettati", this.filters);
         },
     },
     computed: {
         slug() {
-            return `?latitude=${store.latitude}&longitude=${store.longitude}&radius=${store.radius}&beds=${this.filters.beds}&rooms=${this.filters.rooms}`;
+            return `?latitude=${this.filters.latitude}&longitude=${this.filters.longitude}&radius=${this.filters.radius}
+            &beds=${this.filters.beds}&rooms=${this.filters.rooms}`;
         }
     }
 }
