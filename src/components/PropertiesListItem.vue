@@ -23,13 +23,11 @@ export default {
         <p class="card-text px-3 mt-2 text-center"> This property is {{ propertyObj.distance.toFixed(2) }}km from the
             place you
             searched </p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }}  -  <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }}</p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
         <!--<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
         <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
-        <p class="card-text px-3"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
-        <p class="card-text px-3 "> <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }} </p>
-        <p class="card-text px-3 "> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
-        <p class="card-text px-3 "> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
-            propertyObj.square_meters }} mq</p>
 
         <p class="card-text px-3 mt-4 fw-bold">Services:</p>
         <ul class="px-3">
