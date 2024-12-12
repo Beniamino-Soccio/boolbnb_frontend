@@ -121,6 +121,12 @@ export default {
         },
         serviceSlug() {
             return this.selectedServices.join('-');
+        },
+        isDisabled() {
+            if (this.searchProperty == "") {
+                return true;
+            }
+            return false;
         }
     },
     created() {
@@ -182,8 +188,9 @@ export default {
                 Services
             </button>
 
-            <router-link class="btn btn-dark" type="submit" @click="[saveDataAddress(), searchAddress()]"
-                aria-current="page" :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
+            <router-link class="btn btn-dark" :class="{ disabled: isDisabled }" type="submit"
+                @click="[saveDataAddress(), searchAddress()]" aria-current="page"
+                :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
             </router-link>
         </div>
 
@@ -374,5 +381,10 @@ label {
 
 .number {
     margin-left: 10px;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 </style>
