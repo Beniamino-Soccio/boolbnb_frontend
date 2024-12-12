@@ -150,7 +150,9 @@ export default {
             this.filters.radius = formData.radius;
             this.filters.rooms = formData.rooms;
             this.filters.beds = formData.beds;
-            this.selectedServices = formData.services.split('-');
+            if (formData.services.length != 0) {
+                this.selectedServices = formData.services.split('-');
+            }
         }
 
     }
@@ -185,7 +187,7 @@ export default {
 
 
             <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
-                Services
+                {{ (selectedServices.length == 0 ? "Add required services" : "Edit require Services") }}
             </button>
 
             <router-link class="btn btn-dark" :class="{ disabled: isDisabled }" type="submit"
