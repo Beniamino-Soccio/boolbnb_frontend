@@ -22,18 +22,17 @@ export default {
     methods: {
         sendSearchParametres(formData) {
             console.log("PARTE CHIAMATA AXIOS", formData);
+            store.searchedBool = false;
 
             axios.post(store.apiUrl, formData)
                 .then((response) => {
-                    store.searchedBool = false;
                     console.log('HO FATTO LA CHIAMATA', response.data.result);
                     this.properties = response.data.result;
-                    if (response.data.result.length > 0) {
-                        store.searchedBool = true;
-                    }
+                    store.searchedBool = true;
                 })
                 .catch(function (error) {
                     console.log(error);
+                    store.searchedBool = true;
                 });
         },
         extractNumbers(queryString) {

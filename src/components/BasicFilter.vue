@@ -63,6 +63,7 @@ export default {
             }
         },
         searchAddress() {
+            //Creating object formData with filter for the API call in AppFilteredProperties
             const formData = {
                 latitude: this.filters.latitude,
                 longitude: this.filters.longitude,
@@ -70,7 +71,8 @@ export default {
                 rooms: this.filters.rooms,
                 beds: this.filters.beds,
             }
-            console.log('EMIT', formData);
+
+            // Custom event 
             this.$emit('propertyCall', formData);
         },
         applyFilters() {

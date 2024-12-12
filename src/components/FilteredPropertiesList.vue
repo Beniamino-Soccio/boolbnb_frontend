@@ -14,7 +14,6 @@ export default {
     },
     data() {
         return {
-            propertyList: [],
             apiUrl: 'http://127.0.0.1:8000/api/admin/properties',
             store,
         }
@@ -38,9 +37,8 @@ export default {
 
 <template>
 
-
-    <section class="col-12 container justify-content-between">
-        <div class="searched-property" v-if="store.searchedBool">
+    <section class="col-12 container justify-content-between" v-if="store.searchedBool">
+        <div class="searched-property" v-if="properties">
             <div class="d-flex justify-content-center flex-wrap">
                 <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property"
                     @click="show(property.id)" />
@@ -50,6 +48,8 @@ export default {
             <h2 class="py-5">Sorry, We didn't found any properties near this location you searched.</h2>
         </div>
     </section>
+
+    <AppLoader v-else />
 
 </template>
 
