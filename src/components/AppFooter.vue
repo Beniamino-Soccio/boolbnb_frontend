@@ -22,9 +22,6 @@ export default {
             <li>
               <router-link class="footer-link" :to="{ name: 'about' }">About</router-link>
             </li>
-            <li>
-              <router-link class="footer-link" :to="{ name: 'properties' }">Properties List</router-link>
-            </li>
           </ul>
         </div>
 

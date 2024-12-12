@@ -1,8 +1,9 @@
 <script>
 import { store } from '../js/store';
 import { important } from '../js/important';
-import tt from '@tomtom-international/web-sdk-services';
+import tt, { services } from '@tomtom-international/web-sdk-services';
 import { useRoute } from 'vue-router';
+import axios from 'axios';
 
 export default {
     data() {
@@ -20,7 +21,8 @@ export default {
                 rooms: '1',
                 beds: '1',
             },
-            availableServices: ['wifi', 'parking', 'pool', 'gym', 'petsAllowed'],
+            availableServices: [],
+            selectedServices: [],
         };
     },
     methods: {
@@ -71,6 +73,7 @@ export default {
                 radius: this.filters.radius,
                 rooms: this.filters.rooms,
                 beds: this.filters.beds,
+                services: this.serviceSlug,
             }
 
             // Custom event 
@@ -85,6 +88,7 @@ export default {
         },
         resetFilters() {
             //RESETTARE I SERVIZI
+            this.selectedServices = [];
             console.log("Filtri resettati", this.filters);
         },
         extractNumbers(queryString) {
@@ -95,17 +99,33 @@ export default {
             const radius = parseFloat(params.get("radius"));
             const beds = parseFloat(params.get("beds"));
             const rooms = parseFloat(params.get("rooms"));
-            return { search, latitude, longitude, radius, beds, rooms };
+            const services = params.get("services");
+            return { search, latitude, longitude, radius, beds, rooms, services };
+        },
+        getServices() {
+            axios.get(store.apiUrlServices)
+                .then((response) => {
+                    console.log('HO FATTO LA CHIAMATA', response.data.result);
+                    this.availableServices = response.data.result;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     },
     computed: {
         slug() {
             return `?search=${this.searchProperty}&latitude=${this.filters.latitude}&longitude=${this.filters.longitude}
             &radius=${this.filters.radius}
-            &beds=${this.filters.beds}&rooms=${this.filters.rooms}`;
+            &beds=${this.filters.beds}&rooms=${this.filters.rooms}&services=${this.serviceSlug}`;
+        },
+        serviceSlug() {
+            return this.selectedServices.join('-');
         }
     },
     created() {
+        this.getServices();
+
         // Using current Route
         const route = useRoute();
 
@@ -124,6 +144,7 @@ export default {
             this.filters.radius = formData.radius;
             this.filters.rooms = formData.rooms;
             this.filters.beds = formData.beds;
+            this.selectedServices = formData.services.split('-');
         }
 
     }
@@ -169,17 +190,21 @@ export default {
         <div class="filter-popup" v-if="showFilters">
             <div class="filter-popup-overlay" @click="toggleFilterPopup"></div>
             <div class="filter-popup-content">
-                <h3>Services</h3>
-                <div class="form-group">
-                    <label>Services</label>
-                    <div v-for="service in availableServices" :key="service" class="form-check">
-                        <input type="checkbox" :id="service" v-model="filters.services" :value="service"
-                            class="form-check-input" />
-                        <label :for="service" class="form-check-label">{{ service }}</label>
-                    </div>
+                <h3 class="text-center mb-3">Additional Services</h3>
+                <ul class="list-group">
+                    <li v-for="service in availableServices" :key="service" class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" v-model="selectedServices"
+                            :id="service.name" :value="service.id">
+                        <label class="form-check-label" :for="service.name">
+                            <i :class="service.icon_url"></i>
+                            {{ service.name }}
+                        </label>
+                    </li>
+                </ul>
+                <div class="buttons d-flex justify-content-around pt-3">
+                    <button class="btn btn-secondary" @click="applyFilters">Apply Filters</button>
+                    <button class="btn btn-secondary" @click="resetFilters">Reset Filters</button>
                 </div>
-                <button class="btn btn-secondary" @click="applyFilters">Apply Filters</button>
-                <button class="btn btn-secondary" @click="resetFilters">Reset Filters</button>
             </div>
         </div>
 

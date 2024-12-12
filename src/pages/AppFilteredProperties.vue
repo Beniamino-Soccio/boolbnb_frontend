@@ -41,7 +41,8 @@ export default {
             const radius = parseFloat(params.get("radius"));
             const beds = parseFloat(params.get("beds"));
             const rooms = parseFloat(params.get("rooms"));
-            return { latitude, longitude, radius, beds, rooms };
+            const services = params.get("services");
+            return { latitude, longitude, radius, beds, rooms, services };
         }
     },
     created() {

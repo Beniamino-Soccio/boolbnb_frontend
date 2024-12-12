@@ -40,11 +40,10 @@ export default {
     <section class="col-12 container justify-content-between" v-if="store.searchedBool">
         <div class="searched-property" v-if="properties.length > 0">
             <div class="d-flex justify-content-center flex-wrap">
-                <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property"
-                    @click="show(property.id)" />
+                <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property" />
             </div>
         </div>
-        <div class="no-result text-center" v-else>
+        <div class=" no-result text-center" v-else>
             <h2 class="py-5">Sorry, We didn't found any properties with these features</h2>
         </div>
     </section>
