@@ -14,28 +14,6 @@ export default {
     BasicFilter
   },
   methods: {
-    sendSearchParametres() {
-      const formData = {
-        latitude: store.latitude,
-        longitude: store.longitude,
-        radius: store.radius,
-        rooms: store.rooms,
-        beds: store.beds,
-      }
-
-      axios.post(store.apiUrl, formData)
-        .then((response) => {
-          store.searchedBool = false;
-          console.log(response.data.result);
-          store.property = response.data.result;
-          if (response.data.result.length > 0) {
-            store.searchedBool = true;
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
   }
 }
 </script>

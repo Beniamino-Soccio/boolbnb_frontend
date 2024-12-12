@@ -12,15 +12,6 @@ export default {
         return {
             store,
             properties: [],
-            formData: {
-                latitude: '',
-                longitude: '',
-                radius: '',
-                rooms: '',
-                beds: '',
-                services: '',
-            },
-            route: {},
         }
     },
     components: {
@@ -28,32 +19,19 @@ export default {
         BasicFilter
     },
     methods: {
-        sendSearchParametres() {
-            console.log("PARTE CHIAMATA AXIOS");
-            console.log(this.route.params.slug);
-            const slug = this.route.params.slug;
-            console.log(this.extractNumbers(slug));
-            this.formData = this.extractNumbers(slug);
-
-            const formData = {
-                latitude: this.formData.latitude,
-                longitude: this.formData.longitude,
-                radius: this.formData.radius,
-                rooms: this.formData.rooms,
-                beds: this.formData.beds,
-            }
+        sendSearchParametres(formData) {
+            console.log("PARTE CHIAMATA AXIOS", formData);
+            store.searchedBool = false;
 
             axios.post(store.apiUrl, formData)
                 .then((response) => {
-                    store.searchedBool = false;
-                    console.log(response.data.result);
+                    console.log('HO FATTO LA CHIAMATA', response.data.result);
                     this.properties = response.data.result;
-                    if (response.data.result.length > 0) {
-                        store.searchedBool = true;
-                    }
+                    store.searchedBool = true;
                 })
                 .catch(function (error) {
                     console.log(error);
+                    store.searchedBool = true;
                 });
         },
         extractNumbers(queryString) {
@@ -63,17 +41,24 @@ export default {
             const radius = parseFloat(params.get("radius"));
             const beds = parseFloat(params.get("beds"));
             const rooms = parseFloat(params.get("rooms"));
-            const services = parseFloat(params.get("services"));
+            const services = params.get("services");
             return { latitude, longitude, radius, beds, rooms, services };
         }
     },
     created() {
-        this.route = useRoute();
-        /*console.log("PARTE CHIAMATA AXIOS");
-        const slug = this.route.params.slug;
-        console.log(this.extractNumbers(slug));
-        this.formData = this.extractNumbers(slug);*/
-        this.sendSearchParametres();
+        // Using current Route
+        const route = useRoute();
+
+        //Picking the slug in the URL
+        console.log("1)QUESTO è LO SLUG", route.params.slug);
+        const slug = route.params.slug;
+
+        //Extract the params from the slug
+        console.log("QUESTI SONO I PARAMETRI", this.extractNumbers(slug));
+        const formData = this.extractNumbers(slug);
+
+        //Calling the function to search the filtered data
+        this.sendSearchParametres(formData);
     }
 }
 </script>
