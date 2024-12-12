@@ -31,11 +31,6 @@ export default {
     created() {
         this.getSingleProperty();
     },
-    // computed:{
-    //     loaded(){
-    //         return this.singlePost !== null;
-    //     }
-    // }
 
 
 }
@@ -44,7 +39,7 @@ export default {
 <template>
     <div class="container">
         <AppPropertiesShow :propertyObj="singleProperty" />
-        <ModalButton />
+        <ModalButton :propertyId="singleProperty.id" />
     </div>
 
 </template>

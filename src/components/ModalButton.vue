@@ -3,6 +3,12 @@ import axios from 'axios';
 import { store } from '../js/store';
 export default {
   name: "ModalButton",
+  props: {
+    propertyId: {
+      type: Number,
+      required: true, // Rende obbligatorio il passaggio dell'ID
+    },
+  },
   data() {
     return {
       isModalVisible: false,
@@ -11,11 +17,16 @@ export default {
         sender_last_name: "",
         sender_email: "",
         message: "",
-        property_id: "",
+        property_id: this.propertyId, // Valorizzato automaticamente dal prop
       },
       errors: {}, // Per validazione lato client
       serverError: null, // Per eventuali errori lato server
     };
+  },
+  watch: {
+    propertyId(newVal) {
+      this.form.property_id = newVal; // Aggiorna l'ID della proprietà se cambia
+    },
   },
   methods: {
     openModal() {
@@ -31,24 +42,19 @@ export default {
         sender_last_name: "",
         sender_email: "",
         message: "",
-        property_id: "",
+        property_id: this.propertyId, // Reset con il valore corretto
       };
       this.errors = {};
       this.serverError = null;
     },
     validateForm() {
-      // Reset errori
       this.errors = {};
 
-      // Validazioni
       if (this.form.sender_name.length < 3 || this.form.sender_name.length > 50) {
         this.errors.sender_name = "Name must be between 3 and 50 characters.";
       }
       if (this.form.sender_last_name.length < 3 || this.form.sender_last_name.length > 50) {
         this.errors.sender_last_name = "Last Name must be between 3 and 50 characters.";
-      }
-      if (this.form.property_id < 1) {
-        this.errors.property_id = "Add a valid property ID.";
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.sender_email)) {
         this.errors.sender_email = "Invalid email format.";
@@ -94,6 +100,7 @@ export default {
 };
 </script>
 
+
 <template>
   <div class="container d-flex justify-content-end m-0">
     <button type="button" class="btnmodal" @click="openModal">
@@ -128,14 +135,7 @@ export default {
                   :class="{ 'is-invalid': errors.sender_email }" />
                 <div class="invalid-feedback" v-if="errors.sender_email">{{ errors.sender_email }}</div>
               </div>
-              <div class="mb-3">
-                <label for="recipient-property_id" class="col-form-label">Property id:</label>
-                <input type="number" class="form-control" v-model="form.property_id"
-                  :class="{ 'is-invalid': errors.property_id }" />
-                <div class="invalid-feedback" v-if="errors.property_id">
-                  {{ errors.property_id }}
-                </div>
-              </div>
+              
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Message:</label>
                 <textarea class="form-control" v-model="form.message"

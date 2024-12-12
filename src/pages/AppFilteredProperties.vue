@@ -12,6 +12,7 @@ export default {
         return {
             store,
             properties: [],
+            search: '',
         }
     },
     components: {
@@ -57,6 +58,11 @@ export default {
         console.log("QUESTI SONO I PARAMETRI", this.extractNumbers(slug));
         const formData = this.extractNumbers(slug);
 
+        const params = new URLSearchParams(slug);
+        const search = params.get('search');
+
+        this.search = search;
+
         //Calling the function to search the filtered data
         this.sendSearchParametres(formData);
     }
@@ -71,6 +77,10 @@ export default {
                 <h1 class="fw-bold my-5 text-center"> Searched Properties List:</h1>
             </div>
             <BasicFilter @propertyCall="sendSearchParametres" class="mb-5" />
+            <h3 class="mb-4" v-if="properties.length != 0">{{ search }}: {{ properties.length }} {{ (properties.length
+                == 1 ? "property" :
+                "properties") }} found
+            </h3>
             <FilteredPropertiesList :withShow="true" :properties="properties" />
         </div>
     </div>
