@@ -6,7 +6,7 @@ import { store } from '../js/store';
 
 
 export default {
-    name: 'PropertyList',
+    name: 'FilteredPropertiesList',
     components: {
         PropertiesListItem,
         BasicFilter,
@@ -38,14 +38,14 @@ export default {
 <template>
 
     <section class="col-12 container justify-content-between" v-if="store.searchedBool">
-        <div class="searched-property" v-if="properties">
+        <div class="searched-property" v-if="properties.length > 0">
             <div class="d-flex justify-content-center flex-wrap">
                 <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property"
                     @click="show(property.id)" />
             </div>
         </div>
         <div class="no-result text-center" v-else>
-            <h2 class="py-5">Sorry, We didn't found any properties near this location you searched.</h2>
+            <h2 class="py-5">Sorry, We didn't found any properties with these features</h2>
         </div>
     </section>
 

@@ -2,6 +2,7 @@
 import { store } from '../js/store';
 import { important } from '../js/important';
 import tt from '@tomtom-international/web-sdk-services';
+import { useRoute } from 'vue-router';
 
 export default {
     data() {
@@ -76,60 +77,99 @@ export default {
             this.$emit('propertyCall', formData);
         },
         applyFilters() {
-            this.filters.radius = this.filters.radius;
+            /*this.filters.radius = this.filters.radius;
             this.filters.rooms = this.filters.rooms;
             this.filters.beds = this.filters.beds;
+            console.log("Filtri applicati:", this.filters);*/
             this.showFilters = false;
-            console.log("Filtri applicati:", this.filters);
         },
         resetFilters() {
-            this.filters.radius = 20;
-            this.filters.rooms = 1;
-            this.filters.beds = 1;
+            //RESETTARE I SERVIZI
             console.log("Filtri resettati", this.filters);
         },
+        extractNumbers(queryString) {
+            const params = new URLSearchParams(queryString);
+            const search = params.get("search");
+            const latitude = parseFloat(params.get("latitude"));
+            const longitude = parseFloat(params.get("longitude"));
+            const radius = parseFloat(params.get("radius"));
+            const beds = parseFloat(params.get("beds"));
+            const rooms = parseFloat(params.get("rooms"));
+            return { search, latitude, longitude, radius, beds, rooms };
+        }
     },
     computed: {
         slug() {
-            return `?latitude=${this.filters.latitude}&longitude=${this.filters.longitude}&radius=${this.filters.radius}
+            return `?search=${this.searchProperty}&latitude=${this.filters.latitude}&longitude=${this.filters.longitude}
+            &radius=${this.filters.radius}
             &beds=${this.filters.beds}&rooms=${this.filters.rooms}`;
         }
+    },
+    created() {
+        // Using current Route
+        const route = useRoute();
+
+        //Picking the slug in the URL
+        console.log("1)QUESTO è LO SLUG", route.params.slug);
+        const slug = route.params.slug;
+
+        //Extract the params from the slug
+        console.log("QUESTI SONO I PARAMETRI", this.extractNumbers(slug));
+        const formData = this.extractNumbers(slug);
+
+        if (formData.search != null) {
+            this.searchProperty = formData.search;
+            this.filters.latitude = formData.latitude;
+            this.filters.longitude = formData.longitude;
+            this.filters.radius = formData.radius;
+            this.filters.rooms = formData.rooms;
+            this.filters.beds = formData.beds;
+        }
+
     }
 }
 </script>
 
 <template>
     <div class="container-fluid" id="search-bar">
-        <div class="d-flex">
-            <input class="form-control" type="text" placeholder="Search a property.." v-model="searchProperty"
-                aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="search-input">
+                <label for="radius">Search a Location </label>
+                <input class="form-control" type="text" placeholder="Es. Torino, Via Roma 5" v-model="searchProperty"
+                    aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
+            </div>
+
+            <div class="number-input d-flex">
+                <div class=" number radius-input">
+                    <label for="radius">Radius (km)</label>
+                    <input type="number" id="radius" v-model="filters.radius" class="form-control" min="1" />
+                </div>
+
+                <div class="number rooms-input">
+                    <label for="rooms">Rooms</label>
+                    <input type="number" id="rooms" v-model="filters.rooms" class="form-control" min="1" />
+                </div>
+
+                <div class=" number beds-input">
+                    <label for="beds">Beds</label>
+                    <input type="number" id="beds" v-model="filters.beds" class="form-control" min="1" />
+                </div>
+            </div>
+
+
+            <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
+                Services
+            </button>
+
             <router-link class="btn btn-dark" type="submit" @click="[saveDataAddress(), searchAddress()]"
                 aria-current="page" :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
             </router-link>
-            <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
-                Filters
-            </button>
         </div>
 
         <div class="filter-popup" v-if="showFilters">
             <div class="filter-popup-overlay" @click="toggleFilterPopup"></div>
             <div class="filter-popup-content">
-                <h3>Filters</h3>
-                <div class="form-group">
-                    <label for="radius">Radius (km)</label>
-                    <input type="number" id="radius" v-model="filters.radius" class="form-control" min="1"
-                        placeholder="Enter radius in km" />
-                </div>
-                <div class="form-group">
-                    <label for="rooms">Number of Rooms</label>
-                    <input type="number" id="rooms" v-model="filters.rooms" class="form-control" min="1"
-                        placeholder="Enter number of rooms" />
-                </div>
-                <div class="form-group">
-                    <label for="beds">Number of Beds</label>
-                    <input type="number" id="beds" v-model="filters.beds" class="form-control" min="1"
-                        placeholder="Enter number of beds" />
-                </div>
+                <h3>Services</h3>
                 <div class="form-group">
                     <label>Services</label>
                     <div v-for="service in availableServices" :key="service" class="form-check">
@@ -157,7 +197,7 @@ export default {
     flex-direction: column;
     position: relative;
     gap: 10px;
-    width: 600px;
+    /*width: 600px;*/
     padding: 1rem;
     background-color: #fff;
     border: 6px solid #ffc107;
@@ -301,5 +341,13 @@ label {
     transition: all 0.1s ease-in-out;
     color: black;
     margin: 7px;
+}
+
+.number-input {
+    flex-basis: 30%;
+}
+
+.number {
+    margin-left: 10px;
 }
 </style>

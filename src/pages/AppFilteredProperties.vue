@@ -12,7 +12,6 @@ export default {
         return {
             store,
             properties: [],
-            route: {},
         }
     },
     components: {
@@ -47,11 +46,11 @@ export default {
     },
     created() {
         // Using current Route
-        this.route = useRoute();
+        const route = useRoute();
 
         //Picking the slug in the URL
-        console.log("1)QUESTO è LO SLUG", this.route.params.slug);
-        const slug = this.route.params.slug;
+        console.log("1)QUESTO è LO SLUG", route.params.slug);
+        const slug = route.params.slug;
 
         //Extract the params from the slug
         console.log("QUESTI SONO I PARAMETRI", this.extractNumbers(slug));
