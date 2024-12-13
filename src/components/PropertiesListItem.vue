@@ -20,9 +20,11 @@ export default {
         <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
         <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
         <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
-        <!-- <p class="card-text px-3 mt-2 text-center"> This property is {{ propertyObj.distance.toFixed(2) }}km from the
+        <p v-if="propertyObj.distance != null" class="card-text px-3 mt-2 text-center"> This property
+            is {{
+                propertyObj.distance.toFixed(2) }}km from the
             place you
-            searched </p> -->
+            searched </p>
         <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} - <i
                 class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
         <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }}
