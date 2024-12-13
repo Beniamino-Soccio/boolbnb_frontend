@@ -39,7 +39,7 @@ export default {
 
     <section class="col-12 container justify-content-between" v-if="store.searchedBool">
         <div class="searched-property" v-if="properties.length > 0">
-            <div class="d-flex justify-content-center flex-wrap">
+            <div class="d-flex justify-content-evenly flex-wrap">
                 <PropertiesListItem v-for="property in properties" :key="property.id" :propertyObj="property" />
             </div>
         </div>
