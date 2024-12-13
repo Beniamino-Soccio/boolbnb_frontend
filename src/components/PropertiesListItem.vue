@@ -17,7 +17,7 @@ export default {
 
 <template>
 
-    <div class="card col-xxl-4 col-xl-4 col-lg-6 col-md-5 col-sm-12 col-12 mx-3 p-0">
+    <div class="card col-xxl-4 col-xl-6 col-lg-6 col-md-5 col-sm-12 col-12 mx-3 p-0">
         
         <div class="card-body mb-3 position-relative">
             
