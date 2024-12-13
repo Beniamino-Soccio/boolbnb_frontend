@@ -3,6 +3,7 @@ import axios from 'axios';
 import { store } from '../js/store.js'
 
 import BasicFilter from '../components/BasicFilter.vue';
+import SponsoredList from '../components/SponsoredList.vue';
 
 export default {
   data() {
@@ -11,7 +12,8 @@ export default {
     }
   },
   components: {
-    BasicFilter
+    BasicFilter,
+    SponsoredList
   },
   methods: {
   }
@@ -34,6 +36,7 @@ export default {
         </div>
       </div>
       <BasicFilter />
+      <SponsoredList />
 
       <div class="row">
         <div class="col-12 py-5">
