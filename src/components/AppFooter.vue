@@ -28,7 +28,7 @@ export default {
 
         <div class="footer-section footer-social">
           <h4 class="footer-title">Follow Us</h4>
-          <div class="social-icons">
+          <div class="social-icons d-flex-md justify-content-center-md">
             <a href="#" target="_blank" class="social-link">
               <i class="fab fa-facebook-f"></i>
             </a>
@@ -167,6 +167,13 @@ export default {
 
   .footer-section {
     text-align: center;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  h4{
+    margin-top: 0;
   }
 }
 </style>
