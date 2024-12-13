@@ -53,12 +53,5 @@ export default {
 </template>
 
 <style scoped>
-div.card:hover {
-    background-color: #a8e2dd;
-    color: #0e2a35;
-}
 
-.card {
-    max-width: 400px;
-}
 </style>
