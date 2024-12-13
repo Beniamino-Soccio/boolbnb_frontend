@@ -17,7 +17,7 @@ export default {
 
 <template>
     <div class="card col-4 mx-3 p-0">
-        <div class="card-body mb-3">
+        <div class="card-body mb-3 position-relative">
             <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
             <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
             <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
@@ -25,7 +25,7 @@ export default {
             <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} - <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
             <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
             <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
-            <p v-for="sponsorship in propertyObj.sponsorships"> <i class="fa-solid fa-star"></i> {{ sponsorship.name }} </p>
+            <p v-for="sponsorship in propertyObj.sponsorships" class="badge-star position-absolute "> <i class="fa-solid fa-star"></i> sponsored by us! </p>
             <div class="card-body mb-3">
                 <div class="mb-3 d-flex justify-content-center">
                     <router-link class="linkstyle" :to="{ 'name': 'properties.show', params: { id: propertyObj.id } }">
@@ -81,6 +81,18 @@ img {
 .linkstyle {
     color: #000;
     text-decoration: none;
+}
+
+.badge-star{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: white;
+    background-color: red;
+    border-radius: 15px;
+    top: 10px;
+    left: -15px;
+    transform: rotate(340deg);
 }
 
 </style>
