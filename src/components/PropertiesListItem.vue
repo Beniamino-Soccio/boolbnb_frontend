@@ -16,59 +16,25 @@ export default {
 </script>
 
 <template>
-    <div class="card-body">
-        <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
-        <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
-        <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
-        <p v-if="propertyObj.distance != null" class="card-text px-3 mt-2 text-center"> This property
-            is {{
-                propertyObj.distance.toFixed(2) }}km from the
-            place you
-            searched </p>
-        <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} - <i
-                class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
-        <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }}
-        </p>
-        <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
-            propertyObj.square_meters }} mq</p>
-        <p v-for="sponsorship in propertyObj.sponsorships">
-            <i class="fa-solid fa-star"></i> {{ sponsorship.name }}
-        </p>
-
-
-        
-        <div class="card col-4 mx-3 p-0">
+    <div class="card col-4 mx-3 p-0">
         <div class="card-body mb-3">
             <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3" alt="...">
             <h5 class="card-title px-3 text-center ">{{ propertyObj.title }} </h5>
             <p class="card-text px-3 mt-2 text-center"> {{ propertyObj.address }} </p>
-            <p class="card-text px-3 mt-2 text-center"> This property is {{ propertyObj.distance.toFixed(2) }}km from the
-                place you
-                searched </p>
-                <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }}  -  <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
-                <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }}</p>
-                <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
-            <!--<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
-            <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
-        -------------<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
-        <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
-
-            <p class="card-text px-3 mt-4 fw-bold">Services:</p>
-            <ul class="px-3">
-                <li v-for="service in propertyObj.services" :key="service.id">
-                    <i :class="service.icon_url"></i>
-                    {{ service.name }}
-                </li>
-            </ul>-->
-            <div class="mb-3 d-flex justify-content-center">
-                <router-link class="linkstyle" :to="{ 'name': 'properties.show', params: { id: propertyObj.id } }">
-                    <button class="btnmodal">More info!</button>
-                </router-link>
+            <p v-if="propertyObj.distance != null" class="card-text px-3 mt-2 text-center"> This property is {{ propertyObj.distance.toFixed(2) }}km from the place you searched </p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} - <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }}</p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
+            <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{ propertyObj.square_meters }} mq</p>
+            <p v-for="sponsorship in propertyObj.sponsorships"> <i class="fa-solid fa-star"></i> {{ sponsorship.name }} </p>
+            <div class="card-body mb-3">
+                <div class="mb-3 d-flex justify-content-center">
+                    <router-link class="linkstyle" :to="{ 'name': 'properties.show', params: { id: propertyObj.id } }">
+                        <button class="btnmodal">More info!</button>
+                    </router-link>
+                </div>
             </div>
-
         </div>
     </div>
-    
 </template>
 
 <style scoped lang="scss">
@@ -116,4 +82,8 @@ img {
     color: #000;
     text-decoration: none;
 }
+
 </style>
+
+
+

@@ -190,7 +190,7 @@ export default {
                 {{ (selectedServices.length == 0 ? "Add required services" : "Edit require Services") }}
             </button>
 
-            <router-link class="btn btn-dark res-search col-md-2" :class="{ disabled: isDisabled }" type="submit"
+            <router-link class="btn btn-dark res-search col-xxl-1 col-xl-1 col-lg-2 col-md-2 d-flex justify-content-center" :class="{ disabled: isDisabled }" type="submit"
                 @click="[saveDataAddress(), searchAddress()]" aria-current="page"
                 :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
             </router-link>
