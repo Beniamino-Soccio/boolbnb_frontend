@@ -27,9 +27,35 @@ export default {
                     console.log(error);
                 });
         },
+        getUserIp() {
+            axios.get('https://api.ipify.org?format=json')
+                .then((response) => {
+                    console.log(response.data.ip);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        registerView(formData) {
+            axios.post('store.apiUrlviews', formData)
+                .then((response) => {
+                    console.log('HO FATTO LA CHIAMATA', response.data.result);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     },
     created() {
         this.getSingleProperty();
+
+        const userIp = this.getUserIp();
+        const formData = {
+            user_ip: userIp,
+            property_id: this.$route.params.id
+        }
+
+        this.registerView(formData);
     },
 
 
