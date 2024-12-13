@@ -1,9 +1,14 @@
 <script>
 
 import axios from 'axios';
+import PropertiesListItem from './PropertiesListItem.vue';
+
 
 export default {
     name: 'SponsoredList',
+    components: {
+        PropertiesListItem
+    },
     data() {
         return {
             sponsoredList: [],
@@ -25,6 +30,12 @@ export default {
 
         }
     },
+    props: {
+        withShow: {
+            required: false,
+            type: Boolean,
+        }
+    },
     created() {
         this.getSponsoredProperties();
     }
@@ -34,27 +45,14 @@ export default {
 <template>
 
     <section class="sponsored-properties container">
-        <div class="row d-flex justify-content-center">
-            <div class="card col-2 mx-3 mt-5" v-for="sponsoredProperty in sponsoredList" :key="sponsoredProperty.id">
-                <div class="card-body">
-                    <img :src="`http://127.0.0.1:8000/storage/${sponsoredProperty.thumb_url}`" class="card-img-top mb-3"
-                        alt="...">
-                    <h5 class="card-title px-3 text-center">{{ sponsoredProperty.title }}</h5>
-                    <p class="card-text px-3 mt-2 text-center">{{ sponsoredProperty.address }}</p>
-                    <!-- <p class="card-text px-3 mt-2 text-center">This property is {{
-                            sponsoredProperty.distance.toFixed(2) }}km from the place you searched</p> -->
-                    <p class="card-text px-3 text-center">
-                        <i class="fa-solid fa-house"></i> Rooms: {{ sponsoredProperty.rooms }} -
-                        <i class="fa-solid fa-bed"></i> Beds: {{ sponsoredProperty.beds }}
-                    </p>
-                    <p class="card-text px-3 text-center"><i class="fa-solid fa-bath"></i> Bathrooms: {{
-                        sponsoredProperty.bathrooms }}</p>
-                    <p class="card-text px-3 text-center">
-                        <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
-                            sponsoredProperty.square_meters }} mq
-                    </p>
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="my-5">Sponsored Properties !</h3>
             </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <PropertiesListItem class="card col-2 mx-3 mt-5 text-black" v-for="sponsoredProperty in sponsoredList"
+                :key="sponsoredProperty.id" :propertyObj="sponsoredProperty" />
         </div>
     </section>
 
