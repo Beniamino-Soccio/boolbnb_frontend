@@ -20,7 +20,7 @@ export default {
             axios.get(this.apiUrl)
                 .then((response) => {
                     // handle success
-                    console.log(response.data.result);
+                    console.log('Appartamenti sponsorizzati', response.data.result);
                     this.sponsoredList = response.data.result;
                 })
                 .catch(function (error) {
