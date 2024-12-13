@@ -68,6 +68,9 @@ export default {
                         {{ service.name }}
                     </li>
                 </ul>
+                <p v-for="sponsorship in propertyObj.sponsorships"> Sponsorship:
+                    <i class="fa-solid fa-star"></i> {{ sponsorship.name }}
+                </p>
             </div>
         </div>
 
@@ -122,6 +125,6 @@ img {
 
 i {
     font-size: 24px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 </style>
