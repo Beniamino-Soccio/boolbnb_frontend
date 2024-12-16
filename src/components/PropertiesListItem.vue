@@ -31,6 +31,9 @@ export default {
         </p>
         <p class="card-text px-3 text-center"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
             propertyObj.square_meters }} mq</p>
+        <p v-for="sponsorship in propertyObj.sponsorships">
+            <i class="fa-solid fa-star"></i> {{ sponsorship.name }}
+        </p>
         <!--<p class="card-text px-3 mt-2"> {{ propertyObj.description }} </p>
         <p class="card-text px-3 mt-3 fw-bold">Main Info:</p>
 
