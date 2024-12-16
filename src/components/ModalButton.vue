@@ -84,6 +84,11 @@ export default {
       }
     },
   },
+  computed: {
+    isDisabled() {
+      return !this.form.sender_name || !this.form.sender_last_name || !this.form.sender_email || !this.form.message;
+    },
+  },
 };
 </script>
 
@@ -132,7 +137,7 @@ export default {
                 <button type="button" class="btnmodal" @click="closeModal">
                   Close
                 </button>
-                <button type="button" class="btnmodal" @click="sendMessage">
+                <button type="button" class="btnmodal" @click="sendMessage" :class="{ btnmodal, disabled: isDisabled }">
                   Send message
                 </button>
               </div>
@@ -183,5 +188,11 @@ export default {
 
 .is-valid {
   border-color: green;
+}
+
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 </style>
