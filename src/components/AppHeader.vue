@@ -1,6 +1,12 @@
 <script>
+import { store } from '../js/store';
 export default {
   name: "AppHeader",
+  data() {
+    return {
+      store,
+    }
+  }
 };
 </script>
 
@@ -8,41 +14,36 @@ export default {
   <header class="app-header">
     <nav class="navbar navbar-expand-lg">
       <div class="container d-flex justify-content-between align-items-center">
-      
+
         <figure class="logo-container mb-0">
           <img src="/images/BoolBnb.png" alt="logo BoolBnB" class="logo" />
         </figure>
 
-        
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        
+
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link
-                class="nav-link fw-bold fs-6 text-uppercase":to="{ name: 'homepage' }"> Home </router-link>
+              <router-link class="nav-link fw-bold fs-6 text-uppercase" :to="{ name: 'homepage' }"> Home </router-link>
             </li>
             <li class="nav-item">
-              <router-link
-                class="nav-link fw-bold fs-6 text-uppercase mx-3":to="{ name: 'about' }">  About </router-link>
+              <router-link class="nav-link fw-bold fs-6 text-uppercase mx-3" :to="{ name: 'about' }"> About
+              </router-link>
             </li>
           </ul>
         </div>
 
-        
+
         <div class="right-header">
-          <button class="rent-btn btn">Rent with BnB</button>
+          <a :href="store.serverPath">
+            <button v-if="store.user_name === 'Accedi'" class="rent-btn btn">Personal Area</button>
+            <button v-else class="rent-btn btn">{{ store.user_name }}</button>
+          </a>
         </div>
       </div>
     </nav>
@@ -50,7 +51,6 @@ export default {
 </template>
 
 <style scoped>
-
 .app-header {
   background: linear-gradient(90deg, #0056b1, #012a7c);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -170,6 +170,7 @@ export default {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -181,6 +182,7 @@ export default {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

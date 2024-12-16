@@ -1,5 +1,7 @@
 <script>
 import axios from 'axios';
+import { store } from '../js/store.js';
+
 export default {
   name: "ModalButton",
   props: {
@@ -12,9 +14,9 @@ export default {
     return {
       isModalVisible: false,
       form: {
-        sender_name: "",
-        sender_last_name: "",
-        sender_email: "",
+        sender_name: store.user_name == 'Accedi' ? '' : store.user_name,
+        sender_last_name: store.user_last_name,
+        sender_email: store.user_email,
         message: "",
         property_id: this.propertyId, // Valorizzato automaticamente dal prop
       },
@@ -106,20 +108,23 @@ export default {
               <div v-if="serverError" class="alert alert-danger">{{ serverError }}</div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" v-model="form.sender_name" :class="{ 'is-invalid': errors.sender_name }" />
+                <input type="text" class="form-control" v-model="form.sender_name"
+                  :class="{ 'is-invalid': errors.sender_name }" />
                 <div class="invalid-feedback" v-if="errors.sender_name">{{ errors.sender_name }}</div>
               </div>
               <div class="mb-3">
                 <label for="recipient-last-name" class="col-form-label">Last Name:</label>
-                <input type="text" class="form-control" v-model="form.sender_last_name" :class="{ 'is-invalid': errors.sender_last_name }" />
+                <input type="text" class="form-control" v-model="form.sender_last_name"
+                  :class="{ 'is-invalid': errors.sender_last_name }" />
                 <div class="invalid-feedback" v-if="errors.sender_last_name">{{ errors.sender_last_name }}</div>
               </div>
               <div class="mb-3">
                 <label for="recipient-email" class="col-form-label">E-mail:</label>
-                <input type="text" class="form-control" v-model="form.sender_email" :class="{ 'is-invalid': errors.sender_email }" />
+                <input type="text" class="form-control" v-model="form.sender_email"
+                  :class="{ 'is-invalid': errors.sender_email }" />
                 <div class="invalid-feedback" v-if="errors.sender_email">{{ errors.sender_email }}</div>
               </div>
-              
+
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Message:</label>
                 <textarea class="form-control" v-model="form.message"
