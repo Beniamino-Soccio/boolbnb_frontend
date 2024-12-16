@@ -260,25 +260,6 @@ export default {
 
 
 <style scoped>
-.btnmodal {
-  background-color: white;
-  padding: 10px 25px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 2px 6px 0 1px #007bff;
-  transition: all 0.1s ease-in-out;
-  color: black;
-}
-
-.btnmodal:active {
-  transform: translateY(10px);
-  box-shadow: 0 0 0 0 #0046d5;
-}
 
 .invalid-feedback {
   color: #dc3545;

@@ -186,14 +186,19 @@ export default {
             </div>
 
 
-            <button class="btn btn-dark res-services col-lg-2 col-md-4" type="button" @click="toggleFilterPopup">
+            <button class="btnmodal res-services col-lg-2 col-md-4" type="button" @click="toggleFilterPopup">
                 {{ (selectedServices.length == 0 ? "Add required services" : "Edit require Services") }}
             </button>
 
-            <router-link class="btn btn-dark res-search col-xxl-1 col-xl-1 col-lg-2 col-md-2 d-flex justify-content-center" :class="{ disabled: isDisabled }" type="submit"
+            <router-link class="text-black text-decoration-none res-search col-xxl-1 col-xl-1 col-lg-2 col-md-2 d-flex justify-content-center" :class="{ disabled: isDisabled }" type="submit"
                 @click="[saveDataAddress(), searchAddress()]" aria-current="page"
-                :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
+                :to="{ 'name': 'filtered-properties', params: { slug: slug } }">
+
+                <button class="btnmodal"> Search </button>
+
             </router-link>
+        
+            
         </div>
 
         <div class="filter-popup" v-if="showFilters">
