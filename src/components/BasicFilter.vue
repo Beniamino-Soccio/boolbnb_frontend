@@ -25,6 +25,12 @@ export default {
             selectedServices: [],
         };
     },
+    props: {
+        visible: {
+            required: true,
+            type: Boolean,
+        }
+    },
     methods: {
         toggleFilterPopup() {
             this.showFilters = !this.showFilters;
@@ -168,7 +174,7 @@ export default {
                     aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
             </div>
 
-            <div class="number-input d-flex">
+            <div class="number-input d-flex" v-if="visible">
                 <div class=" number radius-input">
                     <label for="radius">Radius (km)</label>
                     <input type="number" id="radius" v-model="filters.radius" class="form-control" min="1" />
@@ -186,7 +192,7 @@ export default {
             </div>
 
 
-            <button class="btn btn-dark" type="button" @click="toggleFilterPopup">
+            <button class="btn btn-dark" type="button" @click="toggleFilterPopup" v-if="visible">
                 {{ (selectedServices.length == 0 ? "Add required services" : "Edit require Services") }}
             </button>
 

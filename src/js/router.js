@@ -11,7 +11,7 @@ const routes = [
     { path: '/about', component: AppAbout, name: 'about' },
     { path: '/properties', component: AppProperties, name: 'properties' },
     { path: '/filtered-properties/:slug', component: AppFilteredProperties, name: 'filtered-properties', params: true },
-    { path: '/properties/:id', component: AppSingleProperty, name: "properties.show" },
+    { path: '/properties/:id/:title', component: AppSingleProperty, name: "properties.show", params: true },
 ]
 
 const router = createRouter({

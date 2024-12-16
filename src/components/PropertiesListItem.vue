@@ -45,7 +45,8 @@ export default {
             </li>
         </ul>-->
         <div class="mb-3 d-flex justify-content-center">
-            <router-link class="linkstyle" :to="{ 'name': 'properties.show', params: { id: propertyObj.id } }">
+            <router-link class="linkstyle"
+                :to="{ 'name': 'properties.show', params: { id: propertyObj.id, title: propertyObj.title } }">
                 <button class="btnmodal">More info!</button>
             </router-link>
         </div>

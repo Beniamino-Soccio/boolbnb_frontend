@@ -13,6 +13,7 @@ export default {
             store,
             properties: [],
             search: '',
+            visible: true,
         }
     },
     components: {
@@ -76,7 +77,7 @@ export default {
             <div class="col-12">
                 <h1 class="fw-bold my-5 text-center"> Searched Properties List:</h1>
             </div>
-            <BasicFilter @propertyCall="sendSearchParametres" class="mb-5" />
+            <BasicFilter :visible="true" @propertyCall="sendSearchParametres" class="mb-5" />
             <h3 class="mb-4" v-if="properties.length != 0">{{ search }}: {{ properties.length }} {{ (properties.length
                 == 1 ? "property" :
                 "properties") }} found

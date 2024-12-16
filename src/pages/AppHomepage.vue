@@ -35,7 +35,7 @@ export default {
           </p>
         </div>
       </div>
-      <BasicFilter />
+      <BasicFilter :visible="false" />
       <SponsoredList />
 
       <div class="row">
