@@ -37,14 +37,6 @@ export default {
       </div>
       <BasicFilter :visible="false" />
       <SponsoredList />
-
-      <div class="row">
-        <div class="col-12 py-5">
-          <div class="logo-container">
-            <img class="homepage-logo" src="/images/BoolBnb.png" alt="Logo BoolBnb" />
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>

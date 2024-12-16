@@ -167,39 +167,47 @@ export default {
 
 <template>
     <div class="container-fluid" id="search-bar">
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="search-input">
+        <div class="d-flex res-display align-items-center justify-content-between">
+            <div
+                class="search-input col-xxl-4 col-xl-4 col-lg-4 col-md-9 col-sm-9 col-9 d-flex justify-content-center flex-column">
                 <label for="radius">Search a Location </label>
                 <input class="form-control" type="text" placeholder="Es. Torino, Via Roma 5" v-model="searchProperty"
                     aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
             </div>
 
-            <div class="number-input d-flex" v-if="visible">
-                <div class=" number radius-input">
-                    <label for="radius">Radius (km)</label>
+            <div class="number-input d-flex row ms-xxl-2 ms-xl-2 ms-lg-2" v-if="visible">
+                <div class=" number radius-input col-xxl-4 col-xl-4 col-lg-4 col-md-3 col-sm-3 col-3 ms-0">
+                    <label for="radius">Radius<span class="res">(km)</span> </label>
                     <input type="number" id="radius" v-model="filters.radius" class="form-control" min="1" />
                 </div>
 
-                <div class="number rooms-input">
+                <div class="number rooms-input col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 ms-0">
                     <label for="rooms">Rooms</label>
                     <input type="number" id="rooms" v-model="filters.rooms" class="form-control" min="1" />
                 </div>
 
-                <div class=" number beds-input">
+                <div class=" number beds-input col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 ms-0">
                     <label for="beds">Beds</label>
                     <input type="number" id="beds" v-model="filters.beds" class="form-control" min="1" />
                 </div>
             </div>
 
 
-            <button class="btn btn-dark" type="button" @click="toggleFilterPopup" v-if="visible">
+            <button class="btnmodal res-services col-lg-2 col-md-4" type="button" @click="toggleFilterPopup"
+                v-if="visible">
                 {{ (selectedServices.length == 0 ? "Add required services" : "Edit require Services") }}
             </button>
 
-            <router-link class="btn btn-dark" :class="{ disabled: isDisabled }" type="submit"
-                @click="[saveDataAddress(), searchAddress()]" aria-current="page"
-                :to="{ 'name': 'filtered-properties', params: { slug: slug } }"> Search
+            <router-link
+                class="text-black text-decoration-none res-search col-xxl-1 col-xl-1 col-lg-2 col-md-2 d-flex justify-content-center"
+                :class="{ disabled: isDisabled }" type="submit" @click="[saveDataAddress(), searchAddress()]"
+                aria-current="page" :to="{ 'name': 'filtered-properties', params: { slug: slug } }">
+
+                <button class="btnmodal"> Search </button>
+
             </router-link>
+
+
         </div>
 
         <div class="filter-popup" v-if="showFilters">
@@ -394,5 +402,106 @@ label {
 .disabled {
     opacity: 0.5;
     pointer-events: none;
+}
+
+/* media query -------------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+    .res-display {
+        flex-direction: column;
+    }
+
+    .res-search {
+        display: block;
+    }
+
+    .radius-input,
+    .beds-input,
+    .rooms-input {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .number-input {
+        justify-content: center;
+    }
+
+    .search-input {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .res-display {
+        flex-direction: column;
+    }
+
+    .res-search {
+        display: block;
+    }
+
+    .radius-input,
+    .beds-input,
+    .rooms-input {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .number-input {
+        justify-content: center;
+    }
+
+    .search-input {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .res-display {
+        flex-direction: column;
+    }
+
+    .res-search {
+        display: block;
+    }
+
+    .radius-input,
+    .beds-input,
+    .rooms-input {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .number-input {
+        justify-content: center;
+    }
+
+    .search-input {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .res-display {
+        flex-direction: column;
+    }
+
+    .res-search {
+        display: block;
+    }
+
+    .radius-input,
+    .beds-input,
+    .rooms-input {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .number-input {
+        justify-content: center;
+    }
+
+    .search-input {
+        margin-bottom: 20px;
+    }
 }
 </style>
