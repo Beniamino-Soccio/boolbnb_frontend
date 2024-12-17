@@ -23,6 +23,7 @@ export default {
       },
       errors: {}, // Per validazione lato client
       serverError: null, // Per eventuali errori lato server
+      isSent: false,
     };
   },
   watch: {
@@ -76,8 +77,10 @@ export default {
       }
 
       try {
+        this.isSent = true;
         const response = await axios.post('http://127.0.0.1:8000/api/admin/messages', this.form);
         console.log(response.data);
+        this.isSent = false;
         this.closeModal();
         this.isSuccessModalVisible = true; // Mostra la modale di successo
         this.resetForm();
@@ -165,7 +168,8 @@ export default {
       Send a message to the host!
     </button>
 
-    <div class="modal fade" tabindex="1" :class="{ show: isModalVisible }" :style="isModalVisible ? 'display: block;' : 'display: none;'" >
+    <div class="modal fade" tabindex="1" :class="{ show: isModalVisible }"
+      :style="isModalVisible ? 'display: block;' : 'display: none;'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -177,36 +181,24 @@ export default {
               <div v-if="serverError" class="alert alert-danger">{{ serverError }}</div>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.sender_name"
-                  :class="{ 'is-invalid': errors.sender_name }"
-                />
+                <input type="text" class="form-control" v-model="form.sender_name"
+                  :class="{ 'is-invalid': errors.sender_name }" />
                 <div class="invalid-feedback" v-if="errors.sender_name">
                   {{ errors.sender_name }}
                 </div>
               </div>
               <div class="mb-3">
                 <label for="recipient-last-name" class="col-form-label">Last Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.sender_last_name"
-                  :class="{ 'is-invalid': errors.sender_last_name }"
-                />
+                <input type="text" class="form-control" v-model="form.sender_last_name"
+                  :class="{ 'is-invalid': errors.sender_last_name }" />
                 <div class="invalid-feedback" v-if="errors.sender_last_name">
                   {{ errors.sender_last_name }}
                 </div>
               </div>
               <div class="mb-3">
                 <label for="recipient-email" class="col-form-label">E-mail:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.sender_email"
-                  :class="{ 'is-invalid': errors.sender_email }"
-                />
+                <input type="text" class="form-control" v-model="form.sender_email"
+                  :class="{ 'is-invalid': errors.sender_email }" />
                 <div class="invalid-feedback" v-if="errors.sender_email">
                   {{ errors.sender_email }}
                 </div>
@@ -214,11 +206,8 @@ export default {
 
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Message:</label>
-                <textarea
-                  class="form-control"
-                  v-model="form.message"
-                  :class="{ 'is-invalid': errors.message }"
-                ></textarea>
+                <textarea class="form-control" v-model="form.message"
+                  :class="{ 'is-invalid': errors.message }"></textarea>
                 <div class="invalid-feedback" v-if="errors.message">
                   {{ errors.message }}
                 </div>
@@ -227,12 +216,8 @@ export default {
                 <button type="button" class="btnmodal" @click="closeModal">
                   Close
                 </button>
-                <button
-                  type="button"
-                  class="btnmodal"
-                  @click="sendMessage"
-                  :class="{ btnmodal, disabled: isDisabled }"
-                >
+                <button type="button" class="btnmodal" @click="sendMessage"
+                  :class="{ btnmodal, disabled: (isDisabled || isSent) }">
                   Send message
                 </button>
               </div>
@@ -242,7 +227,8 @@ export default {
       </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" :class="{ show: isSuccessModalVisible }" :style="isSuccessModalVisible ? 'display: block;' : 'display: none;'" >
+    <div class="modal fade" tabindex="-1" :class="{ show: isSuccessModalVisible }"
+      :style="isSuccessModalVisible ? 'display: block;' : 'display: none;'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -265,7 +251,6 @@ export default {
 
 
 <style scoped>
-
 .invalid-feedback {
   color: #dc3545;
   font-size: 0.875em;
@@ -287,7 +272,7 @@ export default {
 
 
 .disabled {
-    opacity: 0.5;
-    pointer-events: none;
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>
