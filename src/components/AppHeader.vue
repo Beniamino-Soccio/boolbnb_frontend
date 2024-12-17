@@ -20,7 +20,7 @@ export default {
         </figure>
 
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler hamburger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,6 +51,10 @@ export default {
 </template>
 
 <style scoped>
+.hamburger {
+  background-color: #FFD700;
+}
+
 .app-header {
   background: linear-gradient(90deg, #0056b1, #012a7c);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);

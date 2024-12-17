@@ -28,7 +28,7 @@ export default {
     <div class="container text-center">
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 my-5">
           <h1 class="fw-bold text-center animated-title">Welcome to BoolBnb</h1>
           <p class="tagline">
             Find your next unique stay around the world!!
@@ -81,7 +81,7 @@ export default {
 /* Titolo */
 .animated-title {
   font-size: 48px;
-  color: #ffffff;
+  color: #FFD700;
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
   animation: fadeInDown 1s ease-in-out;
@@ -89,7 +89,7 @@ export default {
 
 .tagline {
   font-size: 20px;
-  color: #f1f1f1;
+  color: #FFD700;
   font-style: italic;
 }
 
