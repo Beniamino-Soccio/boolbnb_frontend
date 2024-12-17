@@ -68,8 +68,8 @@ export default {
                         {{ service.name }}
                     </li>
                 </ul>
-                <p v-for="sponsorship in propertyObj.sponsorships"> Sponsorship:
-                    <i class="fa-solid fa-star"></i> {{ sponsorship.name }}
+                <p v-for="sponsorship in propertyObj.sponsorships">
+                    <i class="fa-solid fa-star"></i>Sponsored
                 </p>
             </div>
         </div>
