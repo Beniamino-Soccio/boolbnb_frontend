@@ -81,7 +81,7 @@ export default {
 /* Titolo */
 .animated-title {
   font-size: 48px;
-  color: #FFD700;
+  color: #003a8e;
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
   animation: fadeInDown 1s ease-in-out;
@@ -89,7 +89,7 @@ export default {
 
 .tagline {
   font-size: 20px;
-  color: #FFD700;
+  color: #003a8e;
   font-style: italic;
 }
 

@@ -241,10 +241,6 @@ export default {
 </template>
 
 <style scoped>
-.search-input {
-    width: 80%;
-}
-
 #search-bar {
     display: flex;
     flex-direction: column;
