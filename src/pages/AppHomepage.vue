@@ -28,7 +28,7 @@ export default {
     <div class="container text-center">
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 my-5">
           <h1 class="fw-bold text-center animated-title">Welcome to BoolBnb</h1>
           <p class="tagline">
             Find your next unique stay around the world!!
