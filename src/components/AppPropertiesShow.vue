@@ -57,35 +57,42 @@ export default {
             <i class="fa-solid fa-location-dot"></i>
             <p class="card-text px-3"> {{ propertyObj.address }} </p>
         </div>
-        <div class="d-flex">
-            <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3 rounded"
-                alt="...">
-            <div class="ms-5">
-                <p class="card-text mt-4 fw-bold">Our Services:</p>
+
+        <div class="row">
+            <!-- Descrizione e immagine -->
+            <div class="col-12 col-md-6 order-1 order-md-1">
+                <img :src="`http://127.0.0.1:8000/storage/${propertyObj.thumb_url}`" class="card-img-top mb-3 rounded"
+                    alt="...">
+
+                <div class="mt-4">
+                    <h4>Description:</h4>
+                    <p class="card-text mt-4"> {{ propertyObj.description }} </p>
+                </div>
+            </div>
+
+            <!-- Servizi -->
+            <div class="col-12 col-md-6 order-2 order-md-2 mt-4 mt-md-0">
+                <p class="card-text fw-bold">Our Services:</p>
                 <ul class="list-group">
                     <li class="mb-2" v-for="service in propertyObj.services" :key="service.id">
                         <i :class="service.icon_url"></i>
                         {{ service.name }}
                     </li>
                 </ul>
-                <p v-for="sponsorship in propertyObj.sponsorships">
-                    <i class="fa-solid fa-star"></i>Sponsored
+                <p v-for="sponsorship in propertyObj.sponsorships" class="mt-3">
+                    <i class="fa-solid fa-star"></i> Sponsored
                 </p>
             </div>
         </div>
 
-        <div>
-            <h4>Description:</h4>
-            <p class="card-text mt-4"> {{ propertyObj.description }} </p>
+        <div class="mt-4">
+            <p class="card-text mt-3 fw-bold">Main info about the property:</p>
+            <p class="card-text"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
+            <p class="card-text"> <i class="fa-solid fa-bed"></i> Beds: {{ propertyObj.beds }} </p>
+            <p class="card-text"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
+            <p class="card-text"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
+                propertyObj.square_meters }} mq</p>
         </div>
-
-
-        <p class="card-text mt-3 fw-bold">Main info about the property:</p>
-        <p class="card-text"> <i class="fa-solid fa-house"></i> Rooms: {{ propertyObj.rooms }} </p>
-        <p class="card-text"> <i class="fa-solid fa-bed"></i> Beeds: {{ propertyObj.beds }} </p>
-        <p class="card-text"> <i class="fa-solid fa-bath"></i> Bathrooms: {{ propertyObj.bathrooms }} </p>
-        <p class="card-text"> <i class="fa-solid fa-arrows-up-down-left-right"></i> Square meters: {{
-            propertyObj.square_meters }} mq</p>
 
         <section id="map-property" class="my-5">
             <h3 class="ms-4 mb-3">Where you’ll be</h3>
@@ -96,10 +103,9 @@ export default {
             <i class="fa-solid fa-question question"></i>
             <p>For any questions you can contact the host through the appropriate section</p>
         </div>
-
-
     </div>
 </template>
+
 
 <style scoped lang="scss">
 #map-property {
