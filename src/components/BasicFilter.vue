@@ -297,7 +297,7 @@ export default {
 
 .results-address {
     position: absolute;
-    top: 66px;
+    top: 80px;
     left: 189px;
     transform: translateX(-50%);
     background-color: #ffffff;
@@ -308,6 +308,7 @@ export default {
     overflow-y: auto;
     max-height: 300px;
     font-size: 0.95rem;
+    z-index: 1;
 }
 
 .address {
