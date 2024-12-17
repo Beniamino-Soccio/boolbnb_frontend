@@ -7,7 +7,7 @@ export default {
         {
           name: "Matteo Cota",
           role: "JR Full Stack Web Developer",
-          image: "/public/images/Matteo.jpeg", 
+          image: "/public/images/Matteo.jpeg",
         },
         {
           name: "Beniamino Soccio",
@@ -30,7 +30,7 @@ export default {
           image: "",
         },
       ],
-      
+
     };
   },
 };
@@ -42,13 +42,15 @@ export default {
       <h1 class="about-title">About Us</h1>
       <p class="about-description">
         Welcome to <strong>BoolBNB</strong>, the leading platform for booking unique accommodations around the globe.
-        Whether you’re looking for a cozy apartment in the city, a beachfront villa, or a mountain retreat, we’ve got you covered.
+        Whether you’re looking for a cozy apartment in the city, a beachfront villa, or a mountain retreat, we’ve got
+        you covered.
       </p>
 
       <div class="about-mission">
         <h2>Our Mission</h2>
         <p>
-          At BoolBNB, our mission is to make every journey extraordinary by connecting travelers with exceptional stays and unforgettable experiences.
+          At BoolBNB, our mission is to make every journey extraordinary by connecting travelers with exceptional stays
+          and unforgettable experiences.
           We aim to inspire wanderlust and ensure that each trip is as unique as you are.
         </p>
       </div>
@@ -58,7 +60,8 @@ export default {
         <ul>
           <li>
             <span class="icon">🌟</span>
-            <strong>Customer Focus:</strong> We prioritize our guests’ needs to ensure a seamless and memorable experience.
+            <strong>Customer Focus:</strong> We prioritize our guests’ needs to ensure a seamless and memorable
+            experience.
           </li>
           <li>
             <span class="icon">🚀</span>
@@ -73,16 +76,12 @@ export default {
 
       <div class="about-team">
         <h2>Team</h2>
-        <p>
-          Behind BoolBNB is a passionate group of travel enthusiasts, developers, and designers dedicated to creating a platform that meets the needs of modern travelers.
+        <p class="pb-5">
+          Behind BoolBNB is a passionate group of travel enthusiasts, developers, and designers dedicated to creating a
+          platform that meets the needs of modern travelers.
         </p>
         <div class="team-gallery">
-          <div
-            v-for="(member, index) in teamMembers"
-            :key="index"
-            class="team-member"
-          >
-            <img :src="member.image || placeholderImage" :alt="`Photo of ${member.name}`" />
+          <div v-for="(member, index) in teamMembers" :key="index" class="team-member">
             <p>
               <strong>{{ member.name }}</strong><br />
               {{ member.role }}
@@ -192,6 +191,7 @@ ul li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
