@@ -41,8 +41,8 @@ export default {
 
         <div class="right-header">
           <a :href="store.serverPath">
-            <button class="rent-btn btn">dashboard</button>
-            <!--<button v-else class="rent-btn btn">{{ store.user_name }}</button>-->
+            <button v-if="store.user_name === 'Accedi'" class="rent-btn btn">Login</button>
+            <button v-else class="rent-btn btn">Your dashboard</button>
           </a>
         </div>
       </div>

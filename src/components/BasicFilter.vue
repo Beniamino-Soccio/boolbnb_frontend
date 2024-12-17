@@ -170,9 +170,10 @@ export default {
         <div class="d-flex res-display align-items-center justify-content-between">
             <div
                 class="search-input col-xxl-4 col-xl-4 col-lg-4 col-md-9 col-sm-9 col-9 d-flex justify-content-center flex-column">
-                <label for="radius">Search a Location </label>
+                <label for="search">Search a Location</label>
                 <input class="form-control" type="text" placeholder="Es. Torino, Via Roma 5" v-model="searchProperty"
-                    aria-label="Search" @input="searchAProperty" @keyup.enter="saveDataAddress(); searchAddress()">
+                    aria-label="Search" id="search" @input="searchAProperty"
+                    @keyup.enter="saveDataAddress(); searchAddress()">
             </div>
 
             <div class="number-input d-flex row ms-xxl-2 ms-xl-2 ms-lg-2" v-if="visible">
@@ -240,6 +241,10 @@ export default {
 </template>
 
 <style scoped>
+.search-input {
+    width: 80%;
+}
+
 #search-bar {
     display: flex;
     flex-direction: column;
